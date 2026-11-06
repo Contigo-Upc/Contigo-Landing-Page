@@ -3,54 +3,352 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Contigo te guía paso a paso para realizar tus trámites y pagos digitales.">
-  <title>Contigo | Trámites y pagos paso a paso</title>
+  <meta name="description" content="Contigo te guía paso a paso para realizar tus trámites y pagos digitales de forma fácil y segura.">
+  <title>Contigo | Tu guía en trámites digitales</title>
+  <link rel="icon" href="assets/images/logo-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="assets/styles/main.css">
+  <link rel="stylesheet" href="assets/styles/landing.css">
 </head>
 <body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
   <header class="site-header">
-    <a class="brand" href="#home">Contigo</a>
-    <nav class="main-nav" aria-label="Navegación principal">
-      <ul>
-        <li><a href="#home">Inicio</a></li>
-        <li><a href="#about">¿Qué es Contigo?</a></li>
-        <li><a href="#how-it-works">¿Cómo funciona?</a></li>
-        <li><a href="#contact">Contacto</a></li>
-      </ul>
-    </nav>
+    <div class="container header-inner">
+      <a class="brand" href="#inicio">
+        <img src="assets/images/logo-icon.png" alt="">
+        <span>Contigo</span>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-menu" aria-label="Abrir menú">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+
+      <nav id="main-menu" class="main-nav" aria-label="Navegación principal">
+        <ul class="nav-links">
+          <li><a href="#inicio" class="is-active" aria-current="true">Inicio</a></li>
+          <li><a href="#tramites">Trámites</a></li>
+          <li><a href="#comentarios">Comentarios</a></li>
+          <li><a href="#ayuda">Ayuda</a></li>
+        </ul>
+        <div class="nav-actions">
+          <a class="btn btn-secondary" href="#login" data-focus-login>Iniciar sesión</a>
+          <a class="btn btn-primary" href="register.html">Registrarse</a>
+        </div>
+      </nav>
+    </div>
   </header>
 
-  <main>
-    <section id="home" class="hero">
-      <h1>Tus trámites y pagos, paso a paso y sin complicaciones</h1>
-      <p>Contigo te acompaña en cada etapa para que pagues la luz, el agua o renueves tu DNI con confianza.</p>
-      <a class="button" href="#contact">Quiero empezar</a>
+  <main id="contenido">
+    <section id="inicio" class="section hero">
+      <div class="container hero-grid">
+        <div class="hero-intro">
+          <p class="hero-brand" aria-hidden="true">
+            <img src="assets/images/logo-icon.png" alt="">
+            <span>Contigo</span>
+          </p>
+          <h1>Tu guía en trámites digitales</h1>
+          <p class="hero-text">
+            Te acompaño paso a paso para que realices tus trámites y pagos
+            de forma fácil, segura y sin complicaciones.
+          </p>
+
+          <ul class="features">
+            <li class="feature">
+              <span class="feature-icon"><img src="assets/images/feature-secure.png" alt=""></span>
+              <span>Seguro</span>
+            </li>
+            <li class="feature">
+              <span class="feature-icon"><img src="assets/images/feature-easy.png" alt=""></span>
+              <span>Fácil de usar</span>
+            </li>
+            <li class="feature">
+              <span class="feature-icon"><img src="assets/images/feature-everyone.png" alt=""></span>
+              <span>Para todos</span>
+            </li>
+            <li class="feature">
+              <span class="feature-icon"><img src="assets/images/feature-always.png" alt=""></span>
+              <span>Siempre contigo</span>
+            </li>
+          </ul>
+
+          <div class="hero-illustration">
+            <img src="assets/images/illustration-laptop.png" alt="Mujer sonriente usando Contigo en su laptop">
+            <p class="hero-badge">¡Estamos para ayudarte!</p>
+          </div>
+        </div>
+
+        <div id="login" class="card login-card">
+          <div class="login-panel">
+            <h2>Iniciar sesión</h2>
+            <p class="login-intro">Ingresa con tu correo electrónico y contraseña para continuar.</p>
+
+            <div id="login-alert" class="alert alert-error" role="alert" hidden>
+              <span class="alert-icon" aria-hidden="true">!</span>
+              <div>
+                <p class="alert-title"></p>
+                <p class="alert-text"></p>
+              </div>
+            </div>
+
+            <form id="login-form" novalidate>
+              <div class="field">
+                <label class="field-label" for="login-email">Correo electrónico <span class="field-required" aria-hidden="true">*</span></label>
+                <div class="field-control has-icon">
+                  <img class="field-icon" src="assets/images/icon-mail.png" alt="">
+                  <input class="field-input" id="login-email" name="email" type="email" autocomplete="email" placeholder="usuario@ejemplo.com" required aria-describedby="login-email-error">
+                </div>
+                <p class="field-error" id="login-email-error"></p>
+              </div>
+
+              <div class="field">
+                <label class="field-label" for="login-password">Contraseña <span class="field-required" aria-hidden="true">*</span></label>
+                <div class="field-control has-icon has-action">
+                  <img class="field-icon" src="assets/images/icon-lock.png" alt="">
+                  <input class="field-input" id="login-password" name="password" type="password" autocomplete="current-password" placeholder="Ingresa tu contraseña" required aria-describedby="login-password-error">
+                  <button class="field-action" type="button" data-toggle-password="login-password" aria-pressed="false" aria-label="Mostrar contraseña">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>
+                  </button>
+                </div>
+                <p class="field-error" id="login-password-error"></p>
+              </div>
+
+              <div class="login-options">
+                <label class="checkbox">
+                  <input type="checkbox" id="login-remember" name="remember">
+                  Recordarme
+                </label>
+                <a class="login-forgot" href="phone-login.html">¿Olvidaste tu contraseña?</a>
+              </div>
+
+              <button class="btn btn-primary btn-block" type="submit">
+                Iniciar sesión
+                <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16M14 6l6 6-6 6"/></svg>
+              </button>
+            </form>
+
+            <p class="divider"><span>o continúa con</span></p>
+            <div class="social-login">
+              <button class="btn btn-secondary" type="button" data-soon="Ingresar con Google aún no está disponible. Por ahora usa tu correo o tu celular.">
+                <img src="assets/images/brand-google.png" alt="" width="24" height="24">
+                Google
+              </button>
+              <button class="btn btn-secondary" type="button" data-soon="Ingresar con Facebook aún no está disponible. Por ahora usa tu correo o tu celular.">
+                <img src="assets/images/brand-facebook.png" alt="" width="24" height="24">
+                Facebook
+              </button>
+            </div>
+            <p class="phone-login-link">
+              ¿Prefieres usar tu celular? <a href="phone-login.html">Ingresa con un código</a>
+            </p>
+          </div>
+
+          <div class="signup-panel">
+            <img class="signup-illustration" src="assets/images/illustration-phone.png" alt="">
+            <h2>¿Aún no tienes una cuenta?</h2>
+            <p>Regístrate y accede a todos nuestros servicios, guarda tus trámites y recibe notificaciones importantes.</p>
+            <a class="btn btn-secondary" href="register.html">
+              Crear cuenta
+              <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16M14 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section id="about">
-      <h2>¿Qué es Contigo?</h2>
-      <p>Una aplicación pensada para adultos mayores y personas con poca experiencia digital.</p>
+    <section id="tramites" class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>¿Qué puedes hacer con Contigo?</h2>
+          <p>Elige el trámite que necesitas y te guiaremos paso a paso, sin términos complicados.</p>
+        </div>
+
+        <div class="services-layout">
+          <img class="services-illustration" src="assets/images/illustration-phone.png" alt="Mujer revisando un trámite en su celular">
+
+          <ul class="services-grid">
+            <li class="service-card">
+              <div>
+                <h3>Pago de servicios</h3>
+                <p>Luz, agua, internet y más, en pocos pasos.</p>
+              </div>
+              <span class="service-icon icon-bg-mist"><img src="assets/images/icon-mail.png" alt=""></span>
+            </li>
+            <li class="service-card">
+              <div>
+                <h3>Trámite de DNI</h3>
+                <p>Renueva o actualiza tu DNI paso a paso.</p>
+              </div>
+              <span class="service-icon icon-bg-cream"><img src="assets/images/service-dni.png" alt=""></span>
+            </li>
+            <li class="service-card">
+              <div>
+                <h3>Consulta de deudas</h3>
+                <p>Revisa el estado de tus pagos pendientes.</p>
+              </div>
+              <span class="service-icon icon-bg-lilac"><img src="assets/images/service-debts.png" alt=""></span>
+            </li>
+            <li class="service-card">
+              <div>
+                <h3>Otros trámites</h3>
+                <p>Solicitudes y gestiones frecuentes.</p>
+              </div>
+              <span class="service-icon icon-bg-mint"><img src="assets/images/service-other.png" alt=""></span>
+            </li>
+          </ul>
+        </div>
+
+        <p class="services-note">
+          Contigo te orienta en cada paso, pero no realiza pagos por ti:
+          el pago siempre lo haces tú en la app o web oficial.
+        </p>
+      </div>
     </section>
 
-    <section id="how-it-works">
-      <h2>¿Cómo funciona?</h2>
-      <ol>
-        <li>Elige el trámite que necesitas.</li>
-        <li>Sigue las instrucciones de cada paso.</li>
-        <li>Confirma y guarda tu comprobante.</li>
-      </ol>
+    <section id="comentarios" class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Personas que ya usan Contigo</h2>
+          <p>Esto es lo que nos contaron algunas de las personas que probaron la aplicación durante nuestras validaciones.</p>
+        </div>
+
+        <ul class="testimonials">
+          <li class="testimonial">
+            <p class="stars"><span aria-hidden="true">★★★★★</span><span class="visually-hidden">5 de 5 estrellas</span></p>
+            <blockquote>“Antes le pedía a mi hijo que me ayudara con todo. Ahora entiendo cada paso yo sola y eso me da mucha tranquilidad.”</blockquote>
+            <div class="person">
+              <span class="avatar" aria-hidden="true">MA</span>
+              <div>
+                <p class="person-name">María Elena, 68 años</p>
+                <p>Adulta mayor</p>
+              </div>
+            </div>
+          </li>
+          <li class="testimonial">
+            <p class="stars"><span aria-hidden="true">★★★★★</span><span class="visually-hidden">5 de 5 estrellas</span></p>
+            <blockquote>“No sabía qué documentos necesitaba para mi trámite. Contigo me lo explicó sin tecnicismos y no tuve que buscar en otro lado.”</blockquote>
+            <div class="person">
+              <span class="avatar" aria-hidden="true">CH</span>
+              <div>
+                <p class="person-name">Christian, 24 años</p>
+                <p>Sin experiencia en trámites</p>
+              </div>
+            </div>
+          </li>
+          <li class="testimonial">
+            <p class="stars"><span aria-hidden="true">★★★★★</span><span class="visually-hidden">5 de 5 estrellas</span></p>
+            <blockquote>“Los dibujos y los pasos con imágenes me ayudan bastante. Antes me daba miedo equivocarme y ahora sigo el proceso con calma.”</blockquote>
+            <div class="person">
+              <span class="avatar" aria-hidden="true">RN</span>
+              <div>
+                <p class="person-name">René, 45 años</p>
+                <p>Baja alfabetización digital</p>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
     </section>
 
-    <section id="contact">
-      <h2>Contacto</h2>
-      <p>Muy pronto podrás descargar Contigo.</p>
+    <section id="ayuda" class="section">
+      <div class="container help-grid">
+        <div class="help-intro">
+          <h2>¿Tienes una duda? Escríbenos</h2>
+          <p>Nuestro equipo te responde en un lenguaje claro, sin apuros. Elige el medio que prefieras.</p>
+
+          <ul class="contact-list">
+            <li class="contact-item">
+              <span class="contact-icon"><img src="assets/images/icon-mail.png" alt=""></span>
+              <div>
+                <h3>Correo</h3>
+                <a href="mailto:hola@contigo.pe">hola@contigo.pe</a>
+              </div>
+            </li>
+            <li class="contact-item">
+              <span class="contact-icon"><img src="assets/images/icon-phone.png" alt=""></span>
+              <div>
+                <h3>WhatsApp</h3>
+                <p>+51 987 654 321</p>
+              </div>
+            </li>
+            <li class="contact-item">
+              <span class="contact-icon"><img src="assets/images/icon-clock.png" alt=""></span>
+              <div>
+                <h3>Horario de atención</h3>
+                <p>Lunes a sábado, 8:00 a.m. – 8:00 p.m.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="card contact-card">
+          <div id="contact-alert" class="alert alert-success" role="status" hidden>
+            <span class="alert-icon" aria-hidden="true">✓</span>
+            <div>
+              <p class="alert-title"></p>
+              <p class="alert-text"></p>
+            </div>
+          </div>
+
+          <form id="contact-form" novalidate>
+            <div class="field">
+              <label class="field-label" for="contact-name">Nombre completo <span class="field-required" aria-hidden="true">*</span></label>
+              <input class="field-input" id="contact-name" name="name" type="text" autocomplete="name" placeholder="Escribe tu nombre" required aria-describedby="contact-name-error">
+              <p class="field-error" id="contact-name-error"></p>
+            </div>
+
+            <div class="field">
+              <label class="field-label" for="contact-email">Correo electrónico <span class="field-required" aria-hidden="true">*</span></label>
+              <input class="field-input" id="contact-email" name="email" type="email" autocomplete="email" placeholder="usuario@ejemplo.com" required aria-describedby="contact-email-hint contact-email-error">
+              <p class="field-hint" id="contact-email-hint">Te responderemos a este correo.</p>
+              <p class="field-error" id="contact-email-error"></p>
+            </div>
+
+            <div class="field">
+              <label class="field-label" for="contact-message">¿En qué podemos ayudarte? <span class="field-required" aria-hidden="true">*</span></label>
+              <textarea class="field-input" id="contact-message" name="message" placeholder="Escribe tu mensaje aquí" required aria-describedby="contact-message-error"></textarea>
+              <p class="field-error" id="contact-message-error"></p>
+            </div>
+
+            <button class="btn btn-primary btn-block" type="submit">Enviar mensaje</button>
+          </form>
+        </div>
+      </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <p>&copy; <span id="current-year"></span> Contigo. Todos los derechos reservados.</p>
+    <div class="container footer-inner">
+      <a class="brand" href="#inicio">
+        <img src="assets/images/logo-icon.png" alt="">
+        <span>Contigo</span>
+      </a>
+
+      <ul class="footer-links">
+        <li><a href="#" data-soon="Pronto publicaremos los términos y condiciones.">Términos y condiciones</a></li>
+        <li><a href="#" data-soon="Pronto publicaremos la política de privacidad.">Política y privacidad</a></li>
+      </ul>
+
+      <ul class="social-links">
+        <li><a href="#" data-soon="Pronto tendremos nuestra página de Facebook."><img src="assets/images/social-facebook.png" alt="Contigo en Facebook"></a></li>
+        <li><a href="#" data-soon="Pronto tendremos nuestra cuenta de Instagram."><img src="assets/images/social-instagram.png" alt="Contigo en Instagram"></a></li>
+        <li><a href="#" data-soon="Pronto tendremos nuestro canal de YouTube."><img src="assets/images/social-youtube.png" alt="Contigo en YouTube"></a></li>
+        <li><a href="#" data-soon="Pronto tendremos nuestra página de LinkedIn."><img src="assets/images/social-linkedin.png" alt="Contigo en LinkedIn"></a></li>
+      </ul>
+
+      <p class="footer-note">&copy; <span id="current-year"></span> Contigo. Proyecto académico del curso IHC y Tecnologías Móviles (UPC).</p>
+    </div>
   </footer>
 
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
   <script src="assets/scripts/main.js"></script>
+  <script src="assets/scripts/storage.js"></script>
+  <script src="assets/scripts/forms.js"></script>
+  <script src="assets/scripts/landing.js"></script>
 </body>
 </html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ingresar con mi celular | Contigo</title>
+  <link rel="icon" href="assets/images/logo-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/styles/main.css">
+  <link rel="stylesheet" href="assets/styles/auth.css">
+</head>
+<body class="auth-page">
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <header class="auth-header">
+    <div class="container header-inner">
+      <a class="back-link" href="index.html#login" aria-label="Volver a iniciar sesión">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12H4M10 6l-6 6 6 6"/></svg>
+      </a>
+      <a class="brand" href="index.html">
+        <img src="assets/images/logo-icon.png" alt="">
+        <span>Contigo</span>
+      </a>
+    </div>
+  </header>
+
+  <main id="contenido" class="auth-main">
+    <div class="container auth-grid">
+      <aside class="auth-aside">
+        <img src="assets/images/illustration-phone.png" alt="">
+        <h2>Sin contraseñas difíciles</h2>
+        <p>Te enviamos un código a tu celular y entras en un momento.</p>
+      </aside>
+
+      <section class="card auth-card" aria-labelledby="phone-title">
+        <h1 id="phone-title">Ingresa con tu celular</h1>
+        <p class="auth-intro">Te enviaremos un código de 6 dígitos por mensaje de texto. No necesitas recordar contraseñas.</p>
+
+        <div id="phone-alert" class="alert alert-error" role="alert" hidden>
+          <span class="alert-icon" aria-hidden="true">!</span>
+          <div>
+            <p class="alert-title"></p>
+            <p class="alert-text"></p>
+          </div>
+        </div>
+
+        <form id="phone-form" novalidate>
+          <div class="field">
+            <label class="field-label" for="phone-number">Número de celular <span class="field-required" aria-hidden="true">*</span></label>
+            <input class="field-input" id="phone-number" name="phone" type="tel" inputmode="numeric" autocomplete="tel-national" maxlength="11" placeholder="Ejemplo: 987 654 321" required aria-describedby="phone-number-hint phone-number-error">
+            <p class="field-hint" id="phone-number-hint">Usa el mismo número con el que te registraste.</p>
+            <p class="field-error" id="phone-number-error"></p>
+          </div>
+
+          <div class="auth-actions">
+            <button id="phone-submit" class="btn btn-primary btn-block" type="submit">Enviar código</button>
+          </div>
+        </form>
+
+        <p class="auth-switch">¿Aún no tienes cuenta? <a href="register.html">Regístrate</a></p>
+      </section>
+    </div>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+  <script src="assets/scripts/main.js"></script>
+  <script src="assets/scripts/storage.js"></script>
+  <script src="assets/scripts/forms.js"></script>
+  <script src="assets/scripts/phone-login.js"></script>
+</body>
+</html>

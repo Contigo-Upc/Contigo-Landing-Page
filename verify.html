@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verificar código | Contigo</title>
+  <link rel="icon" href="assets/images/logo-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/styles/main.css">
+  <link rel="stylesheet" href="assets/styles/auth.css">
+</head>
+<body class="auth-page">
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <header class="auth-header">
+    <div class="container header-inner">
+      <a id="back-link" class="back-link" href="index.html" aria-label="Volver">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12H4M10 6l-6 6 6 6"/></svg>
+      </a>
+      <a class="brand" href="index.html">
+        <img src="assets/images/logo-icon.png" alt="">
+        <span>Contigo</span>
+      </a>
+    </div>
+  </header>
+
+  <main id="contenido" class="auth-main">
+    <div class="container auth-grid">
+      <aside class="auth-aside">
+        <img src="assets/images/illustration-phone.png" alt="">
+        <h2>Un paso más</h2>
+        <p>Revisamos que el celular sea tuyo para proteger tu cuenta.</p>
+      </aside>
+
+      <section class="card auth-card" aria-labelledby="verify-title">
+        <div id="verify-panel">
+          <h1 id="verify-title">Verificar código</h1>
+          <p class="auth-intro">Enviamos un código a <strong id="verify-phone">+51</strong></p>
+
+          <div id="sms-box" class="alert alert-info">
+            <span class="alert-icon" aria-hidden="true">✉</span>
+            <div>
+              <p class="alert-title">Mensaje de texto (simulado)</p>
+              <p class="alert-text">Tu código de Contigo es <strong id="sms-code">------</strong>. Escríbelo en los cuadros de abajo.</p>
+            </div>
+          </div>
+
+          <div id="verify-alert" class="alert alert-error" role="alert" hidden>
+            <span class="alert-icon" aria-hidden="true">!</span>
+            <div>
+              <p class="alert-title"></p>
+              <p class="alert-text"></p>
+            </div>
+          </div>
+
+          <form id="verify-form" novalidate>
+            <p id="code-label" class="code-label">Escribe los 6 números del código</p>
+            <div id="code-inputs" class="code-inputs" role="group" aria-labelledby="code-label">
+              <input class="code-digit" type="text" inputmode="numeric" autocomplete="one-time-code" aria-label="Número 1 de 6">
+              <input class="code-digit" type="text" inputmode="numeric" aria-label="Número 2 de 6">
+              <input class="code-digit" type="text" inputmode="numeric" aria-label="Número 3 de 6">
+              <input class="code-digit" type="text" inputmode="numeric" aria-label="Número 4 de 6">
+              <input class="code-digit" type="text" inputmode="numeric" aria-label="Número 5 de 6">
+              <input class="code-digit" type="text" inputmode="numeric" aria-label="Número 6 de 6">
+            </div>
+
+            <p id="code-timer" class="code-timer">El código vence en <strong id="code-time">05:00</strong></p>
+
+            <div class="auth-actions">
+              <button id="verify-submit" class="btn btn-primary btn-block" type="submit">Verificar</button>
+              <button id="resend-button" class="btn btn-secondary btn-block" type="button">Reenviar código</button>
+            </div>
+          </form>
+
+          <p class="auth-switch">¿Ya no es tu número? <a id="change-phone" href="register.html">Cambiar celular</a></p>
+        </div>
+
+        <div id="opening-panel" class="success-screen" role="status" hidden>
+          <div class="success-check" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>
+          </div>
+          <h1 id="opening-title">¡Hola!</h1>
+          <p>Estamos abriendo tu cuenta. Espéranos un momento...</p>
+          <div class="spinner" aria-hidden="true"></div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+  <script src="assets/scripts/main.js"></script>
+  <script src="assets/scripts/storage.js"></script>
+  <script src="assets/scripts/forms.js"></script>
+  <script src="assets/scripts/verify.js"></script>
+</body>
+</html>
