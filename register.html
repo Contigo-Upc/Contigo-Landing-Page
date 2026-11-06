@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crear cuenta | Contigo</title>
+  <link rel="icon" href="assets/images/logo-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/styles/main.css">
+  <link rel="stylesheet" href="assets/styles/auth.css">
+</head>
+<body class="auth-page">
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <header class="auth-header">
+    <div class="container header-inner">
+      <a class="back-link" href="index.html" aria-label="Volver a la página principal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12H4M10 6l-6 6 6 6"/></svg>
+      </a>
+      <a class="brand" href="index.html">
+        <img src="assets/images/logo-icon.png" alt="">
+        <span>Contigo</span>
+      </a>
+    </div>
+  </header>
+
+  <main id="contenido" class="auth-main">
+    <div class="container auth-grid">
+      <aside class="auth-aside">
+        <img src="assets/images/illustration-phone.png" alt="">
+        <h2>Crea tu cuenta en un minuto</h2>
+        <p>Guarda tus trámites, recibe recordatorios de pago y avanza paso a paso, a tu ritmo.</p>
+      </aside>
+
+      <section class="card auth-card" aria-labelledby="register-title">
+        <div id="register-form-panel">
+          <h1 id="register-title">Cuéntanos sobre ti</h1>
+          <p class="auth-intro">Con estos datos prepararemos Contigo a tu manera. Solo toma un minuto.</p>
+
+          <div id="register-alert" class="alert alert-error" role="alert" hidden>
+            <span class="alert-icon" aria-hidden="true">!</span>
+            <div>
+              <p class="alert-title"></p>
+              <p class="alert-text"></p>
+            </div>
+          </div>
+
+          <form id="register-form" novalidate>
+            <div class="field">
+              <label class="field-label" for="register-name">Nombre completo <span class="field-required" aria-hidden="true">*</span></label>
+              <input class="field-input" id="register-name" name="name" type="text" autocomplete="name" placeholder="Escribe tu nombre" required aria-describedby="register-name-error">
+              <p class="field-error" id="register-name-error"></p>
+            </div>
+
+            <div class="field">
+              <label class="field-label" for="register-age">Edad <span class="field-required" aria-hidden="true">*</span></label>
+              <input class="field-input" id="register-age" name="age" type="text" inputmode="numeric" maxlength="3" placeholder="Ejemplo: 65" required aria-describedby="register-age-error">
+              <p class="field-error" id="register-age-error"></p>
+            </div>
+
+            <div class="field">
+              <label class="field-label" for="register-phone">Número de celular <span class="field-required" aria-hidden="true">*</span></label>
+              <input class="field-input" id="register-phone" name="phone" type="tel" inputmode="numeric" autocomplete="tel-national" maxlength="11" placeholder="Ejemplo: 987 654 321" required aria-describedby="register-phone-hint register-phone-error">
+              <p class="field-hint" id="register-phone-hint">Lo usaremos para enviarte un código y recordatorios de pago.</p>
+              <p class="field-error" id="register-phone-error"></p>
+            </div>
+
+            <div class="field">
+              <label class="field-label" for="register-email">Correo electrónico <span class="field-required" aria-hidden="true">*</span></label>
+              <input class="field-input" id="register-email" name="email" type="email" autocomplete="email" placeholder="usuario@ejemplo.com" required aria-describedby="register-email-hint register-email-error">
+              <p class="field-hint" id="register-email-hint">Lo usarás para iniciar sesión.</p>
+              <p class="field-error" id="register-email-error"></p>
+            </div>
+
+            <div class="field">
+              <label class="field-label" for="register-password">Contraseña <span class="field-required" aria-hidden="true">*</span></label>
+              <div class="field-control has-action">
+                <input class="field-input" id="register-password" name="password" type="password" autocomplete="new-password" placeholder="Crea una contraseña" required aria-describedby="register-password-hint register-password-error">
+                <button class="field-action" type="button" data-toggle-password="register-password" aria-pressed="false" aria-label="Mostrar contraseña">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>
+                </button>
+              </div>
+              <p class="field-hint" id="register-password-hint">Usa al menos 6 letras o números.</p>
+              <p class="field-error" id="register-password-error"></p>
+            </div>
+
+            <div class="auth-actions">
+              <button id="register-submit" class="btn btn-primary btn-block" type="submit">Registrarme</button>
+              <button id="voice-start" class="btn btn-secondary btn-block" type="button">
+                <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>
+                Registro por voz
+              </button>
+            </div>
+          </form>
+
+          <p class="auth-footnote">
+            Al continuar aceptas los <a href="#" data-soon="Pronto publicaremos los términos y condiciones.">Términos</a>
+            y la <a href="#" data-soon="Pronto publicaremos la política de privacidad.">Política de privacidad</a>.
+          </p>
+          <p class="auth-switch">¿Ya tienes una cuenta? <a href="index.html#login">Inicia sesión</a></p>
+        </div>
+
+        <div id="voice-panel" class="voice-panel" hidden>
+          <h1>Registro por voz</h1>
+          <div class="voice-mic" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>
+          </div>
+          <p id="voice-status" class="voice-status" role="status">Te escucho...</p>
+          <p>Di tu nombre y tu edad, con calma. Por ejemplo: “Me llamo María Elena, tengo 68 años”.</p>
+
+          <div id="voice-alert" class="alert alert-error" role="alert" hidden>
+            <span class="alert-icon" aria-hidden="true">!</span>
+            <div>
+              <p class="alert-title"></p>
+              <p class="alert-text"></p>
+            </div>
+          </div>
+
+          <div class="auth-actions">
+            <button id="voice-retry" class="btn btn-primary btn-block" type="button" hidden>Intentar de nuevo</button>
+            <button id="voice-stop" class="btn btn-secondary btn-block" type="button">Detener</button>
+            <button id="voice-write" class="btn btn-secondary btn-block" type="button">Escribir mis datos</button>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+  <script src="assets/scripts/main.js"></script>
+  <script src="assets/scripts/storage.js"></script>
+  <script src="assets/scripts/forms.js"></script>
+  <script src="assets/scripts/register.js"></script>
+</body>
+</html>
