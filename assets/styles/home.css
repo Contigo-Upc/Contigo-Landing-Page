@@ -1,0 +1,232 @@
+.app-page {
+  background: var(--color-white);
+  padding-bottom: 88px;
+}
+
+.home-main {
+  padding: var(--space-5) 0 var(--space-6);
+}
+
+.home-greeting {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-bottom: var(--space-5);
+}
+
+.home-greeting p {
+  font-size: var(--text-h3);
+}
+
+.home-search {
+  position: relative;
+  max-width: 640px;
+  margin-bottom: var(--space-5);
+}
+
+.home-search .field-input {
+  padding-left: 52px;
+  border-color: var(--color-field-border);
+  background: var(--color-mist);
+}
+
+.search-icon {
+  position: absolute;
+  top: 50%;
+  left: var(--space-4);
+  width: 24px;
+  height: 24px;
+  transform: translateY(-50%);
+  color: var(--color-text);
+  pointer-events: none;
+}
+
+.task-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-3);
+  margin: 0 0 var(--space-5);
+  padding: 0;
+  list-style: none;
+}
+
+.task-grid li[hidden] {
+  display: none;
+}
+
+.task-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-2);
+  width: 100%;
+  height: 100%;
+  min-height: var(--touch-size);
+  padding: var(--space-4);
+  border: 2px solid transparent;
+  border-radius: var(--radius);
+  background: var(--color-mist);
+  font-family: inherit;
+  text-align: left;
+  color: var(--color-text);
+  cursor: pointer;
+  transition: border-color 0.2s, background-color 0.2s;
+}
+
+.task-card:hover {
+  border-color: var(--color-mint);
+}
+
+.task-card:active {
+  background: var(--color-mint);
+}
+
+.task-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  margin-bottom: var(--space-2);
+  border-radius: 50%;
+}
+
+.task-icon img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.icon-bg-mint { background: var(--color-mint); }
+.icon-bg-sky { background: var(--color-sky); }
+.icon-bg-lilac { background: var(--color-lilac); }
+
+.task-title {
+  font-size: var(--text-h3);
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--color-heading);
+}
+
+.task-text {
+  font-size: var(--text-caption);
+}
+
+.home-note {
+  padding: var(--space-4);
+  border-radius: var(--radius);
+  background: var(--color-cream);
+  font-weight: 500;
+}
+
+.app-nav {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 60;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: var(--space-2) var(--space-2) var(--space-3);
+  background: var(--color-mist);
+  box-shadow: 0 -1px 0 var(--color-sky);
+}
+
+.app-nav-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
+  min-height: 56px;
+  padding: var(--space-1);
+  font-size: var(--text-caption);
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.app-nav-link svg {
+  width: 56px;
+  height: 32px;
+  padding: var(--space-1) var(--space-4);
+  border-radius: var(--radius-pill);
+}
+
+.app-nav-link.is-active {
+  font-weight: 700;
+  color: var(--color-heading);
+}
+
+.app-nav-link.is-active svg {
+  background: var(--color-mint);
+}
+
+.app-nav-link:hover svg {
+  background: var(--color-sky);
+}
+
+.logout-button {
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--text-body);
+}
+
+@media (min-width: 768px) {
+  .task-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-5);
+  }
+
+  .task-card {
+    padding: var(--space-5);
+  }
+
+  .home-main {
+    padding: var(--space-6) 0;
+  }
+}
+
+@media (min-width: 960px) {
+  .app-page {
+    padding-bottom: 0;
+  }
+
+  .app-nav {
+    position: static;
+    display: flex;
+    gap: var(--space-2);
+    padding: 0;
+    background: none;
+    box-shadow: none;
+  }
+
+  .app-nav-link {
+    flex-direction: row;
+    gap: var(--space-2);
+    min-height: var(--touch-size);
+    padding: 0 var(--space-4);
+    border-radius: var(--radius-pill);
+    font-size: var(--text-h3);
+  }
+
+  .app-nav-link svg {
+    width: 24px;
+    height: 24px;
+    padding: 0;
+  }
+
+  .app-nav-link.is-active {
+    background: var(--color-mint);
+  }
+
+  .app-nav-link.is-active svg,
+  .app-nav-link:hover svg {
+    background: none;
+  }
+
+  .app-nav-link:hover {
+    background: var(--color-mist);
+  }
+
+  .app-nav-link.is-active:hover {
+    background: var(--color-mint);
+  }
+}
