@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cuenta creada | Contigo</title>
+  <link rel="icon" href="assets/images/logo-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/styles/main.css">
+  <link rel="stylesheet" href="assets/styles/auth.css">
+</head>
+<body class="auth-page">
+  <header class="auth-header">
+    <div class="container header-inner">
+      <span class="brand">
+        <img src="assets/images/logo-icon.png" alt="">
+        <span>Contigo</span>
+      </span>
+    </div>
+  </header>
+
+  <main id="contenido" class="auth-main">
+    <div class="container">
+      <section class="card auth-card success-screen" aria-labelledby="welcome-title">
+        <div class="success-check" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>
+        </div>
+        <h1 id="welcome-title">¡Te damos la bienvenida!</h1>
+        <p>Tu cuenta Contigo ya está lista. Ahora podemos acompañarte en tus trámites paso a paso.</p>
+
+        <dl class="summary">
+          <div class="summary-row">
+            <dt>Nombre:</dt>
+            <dd id="summary-name"></dd>
+          </div>
+          <div class="summary-row">
+            <dt>Edad:</dt>
+            <dd id="summary-age"></dd>
+          </div>
+          <div class="summary-row">
+            <dt>Celular:</dt>
+            <dd id="summary-phone"></dd>
+          </div>
+          <div class="summary-row">
+            <dt>Correo:</dt>
+            <dd id="summary-email"></dd>
+          </div>
+        </dl>
+
+        <a id="start-button" class="btn btn-primary btn-block" href="home.html">Empezar a usar Contigo</a>
+      </section>
+    </div>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+  <script src="assets/scripts/main.js"></script>
+  <script src="assets/scripts/storage.js"></script>
+  <script src="assets/scripts/forms.js"></script>
+  <script src="assets/scripts/welcome.js"></script>
+</body>
+</html>
