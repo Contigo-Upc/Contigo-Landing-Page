@@ -1,6 +1,8 @@
 const USERS_KEY = "contigo.users";
 const SESSION_KEY = "contigo.session";
 const PENDING_KEY = "contigo.pending";
+const RECEIPTS_KEY = "contigo.receipts";
+const GUIDE_KEY = "contigo.guide";
 
 function readJson(storage, key) {
   try {
@@ -59,6 +61,22 @@ function createUser(data) {
   return user;
 }
 
+function updateUser(userId, changes) {
+  const users = getUsers();
+  const user = users.find(function (item) {
+    return item.id === userId;
+  });
+
+  if (!user) {
+    return null;
+  }
+
+  Object.assign(user, changes);
+  user.email = user.email.toLowerCase();
+  writeJson(localStorage, USERS_KEY, users);
+  return user;
+}
+
 function startSession(userId, remember) {
   endSession();
   const storage = remember ? localStorage : sessionStorage;
@@ -97,6 +115,37 @@ function getPending() {
 function clearPending() {
   try {
     sessionStorage.removeItem(PENDING_KEY);
+  } catch (error) {
+  }
+}
+
+function getReceipts(userId) {
+  const receipts = readJson(localStorage, RECEIPTS_KEY) || [];
+  return receipts
+    .filter(function (receipt) {
+      return receipt.userId === userId;
+    })
+    .sort(function (a, b) {
+      return new Date(b.date) - new Date(a.date);
+    });
+}
+
+function saveReceipt(receipt) {
+  const receipts = readJson(localStorage, RECEIPTS_KEY) || [];
+  receipts.push(receipt);
+  writeJson(localStorage, RECEIPTS_KEY, receipts);
+}
+
+function findReceipt(receiptId) {
+  const receipts = readJson(localStorage, RECEIPTS_KEY) || [];
+  return receipts.find(function (receipt) {
+    return receipt.id === receiptId;
+  });
+}
+
+function clearGuide() {
+  try {
+    sessionStorage.removeItem(GUIDE_KEY);
   } catch (error) {
   }
 }

@@ -1,9 +1,27 @@
 # Changelog
 
-## [1.0.1] - 2026-11-05
+## [2.0.0] - 2026-11-09 (Sprint 2)
 
 ### Agregado
-- Guía de contribución (`CONTRIBUTING.md`): cómo usar el proyecto y cómo trabajar con ramas, commits y Pull Requests.
+- Audio de la instrucción de cada paso de la guía, con pausa y continuar (US-12).
+- Escaneo de recibo con lectura simulada, aviso de datos no leídos y opción de cancelar (US-16).
+- Revisión y corrección de los datos leídos antes de guardar (US-17).
+- Aviso de foto borrosa o con poca luz, con opción de volver a tomarla (US-18).
+- Asistente por texto con respuestas simuladas en memoria y derivación a soporte humano (US-21).
+- Ayuda contextual en cada paso de la guía (TSK-22).
+- Significado de términos técnicos al tocarlos, con "Explicar más" (US-23).
+- Alerta de monto inusual respecto al habitual (US-24).
+- Pasos pendientes y verificación en la plataforma oficial al cerrar la guía (US-29).
+- Resaltado de campos con error, resumen y desplazamiento automático (US-32).
+- Estado del recibo (pendiente, en proceso, pagado) y aviso de pago duplicado (US-33).
+- Ayuda proactiva del asistente tras 3 errores seguidos (US-34).
+- Registro automático o manual de la fecha de vencimiento (US-36).
+- Recordatorios 2 días antes y el día del vencimiento, desactivables por pago (US-37).
+- Calendario de pagos en vista de lista y mensual, con filtro por mes (US-38).
+- Continuar un trámite pendiente desde el último paso guardado (US-48).
+
+### Notas
+- El código del Sprint 1 no se modificó: solo se agregaron etiquetas `<link>` y `<script>` al final de `home.html`, `procedures.html`, `procedure.html`, `profile.html` y `guide.html`.
 
 ## [1.0.0] - 2026-11-05
 

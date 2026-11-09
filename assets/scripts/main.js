@@ -63,8 +63,32 @@ function setupFooterYear() {
   }
 }
 
+function getQueryParam(name) {
+  return new URLSearchParams(window.location.search).get(name);
+}
+
+function simplifyText(text) {
+  return text
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/\p{Diacritic}/gu, "");
+}
+
+function setupLogout() {
+  const button = document.getElementById("logout-button");
+  if (!button) {
+    return;
+  }
+
+  button.addEventListener("click", function () {
+    endSession();
+    window.location.href = "index.html";
+  });
+}
+
 document.addEventListener("DOMContentLoaded", function () {
   setupMenu();
+  setupLogout();
   setupComingSoon();
   setupFooterYear();
 });

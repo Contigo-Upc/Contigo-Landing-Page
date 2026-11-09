@@ -74,6 +74,55 @@ function getFirstName(fullName) {
   return fullName.trim().split(" ")[0];
 }
 
+function validateName(input) {
+  if (isEmpty(input.value)) {
+    showFieldError(input, "Escribe tu nombre para continuar.");
+    return false;
+  }
+  if (!isValidName(input.value)) {
+    showFieldError(input, "Escribe tu nombre solo con letras. Por ejemplo: María Elena.");
+    return false;
+  }
+  return true;
+}
+
+function validateAge(input) {
+  if (isEmpty(input.value)) {
+    showFieldError(input, "Escribe tu edad para continuar.");
+    return false;
+  }
+  const age = Number(input.value);
+  if (!Number.isInteger(age) || age < 18 || age > 110) {
+    showFieldError(input, "Escribe tu edad en números, entre 18 y 110. Por ejemplo: 65.");
+    return false;
+  }
+  return true;
+}
+
+function validatePhone(input) {
+  if (isEmpty(input.value)) {
+    showFieldError(input, "Escribe tu número de celular para continuar.");
+    return false;
+  }
+  if (!isValidPhone(input.value)) {
+    showFieldError(input, "Escribe los 9 números de tu celular, empezando con 9. Por ejemplo: 987 654 321.");
+    return false;
+  }
+  return true;
+}
+
+function validateEmail(input) {
+  if (isEmpty(input.value)) {
+    showFieldError(input, "Escribe tu correo electrónico para continuar.");
+    return false;
+  }
+  if (!isValidEmail(input.value)) {
+    showFieldError(input, "Revisa tu correo: debe tener @ y un punto. Por ejemplo: usuario@ejemplo.com");
+    return false;
+  }
+  return true;
+}
+
 function setupPasswordToggles() {
   document.querySelectorAll("[data-toggle-password]").forEach(function (button) {
     const input = document.getElementById(button.dataset.togglePassword);

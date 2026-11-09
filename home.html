@@ -12,9 +12,9 @@
 
   <link rel="stylesheet" href="assets/styles/main.css">
   <link rel="stylesheet" href="assets/styles/home.css">
+  <link rel="stylesheet" href="assets/styles/procedures.css">
+  <link rel="stylesheet" href="assets/styles/sprint2.css">
 </head>
-<!--hola-->
-<!--Comentario numero 3 carolina mayorga-->
 <body class="app-page">
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
 
@@ -30,7 +30,7 @@
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3l9 8h-3v9h-5v-6h-2v6H6v-9H3z"/></svg>
           <span>Inicio</span>
         </a>
-        <a class="app-nav-link" href="#" data-soon="«Mis trámites» estará disponible pronto.">
+        <a class="app-nav-link" href="procedures.html">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h8l5 5v13H6z"/><path d="M14 3v5h5M9 13h7M9 17h7"/></svg>
           <span>Mis trámites</span>
         </a>
@@ -38,7 +38,7 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6V14M12 17.5v.01"/></svg>
           <span>Ayuda</span>
         </a>
-        <a class="app-nav-link" href="#" data-soon="«Perfil» estará disponible pronto.">
+        <a class="app-nav-link" href="profile.html">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>
           <span>Perfil</span>
         </a>
@@ -64,18 +64,18 @@
 
       <ul id="task-list" class="task-grid">
         <li>
-          <button class="task-card" type="button" data-soon="La guía de «Pago de servicios» estará disponible pronto.">
+          <a class="task-card" href="procedures.html?category=services">
             <span class="task-icon icon-bg-mint"><img src="assets/images/home-payments.png" alt=""></span>
             <span class="task-title">Pago de servicios</span>
             <span class="task-text">Luz, agua e internet, paso a paso.</span>
-          </button>
+          </a>
         </li>
         <li>
-          <button class="task-card" type="button" data-soon="La guía de «Consulta de trámites» estará disponible pronto.">
+          <a class="task-card" href="procedures.html?category=queries">
             <span class="task-icon icon-bg-sky"><img src="assets/images/home-queries.png" alt=""></span>
             <span class="task-title">Consulta de trámites</span>
             <span class="task-text">Entérate qué necesitas hacer.</span>
-          </button>
+          </a>
         </li>
         <li>
           <button class="task-card" type="button" data-soon="La guía de «Identificación de recibos» estará disponible pronto.">
@@ -85,18 +85,18 @@
           </button>
         </li>
         <li>
-          <button class="task-card" type="button" data-soon="La guía de «Seguimiento paso a paso» estará disponible pronto.">
+          <a class="task-card" href="procedures.html">
             <span class="task-icon icon-bg-mint"><img src="assets/images/home-guide.png" alt=""></span>
             <span class="task-title">Seguimiento paso a paso</span>
             <span class="task-text">Te acompañamos en el proceso.</span>
-          </button>
+          </a>
         </li>
         <li>
-          <button class="task-card" type="button" data-soon="La guía de «Requisitos y documentos» estará disponible pronto.">
+          <a class="task-card" href="procedures.html?category=documents">
             <span class="task-icon icon-bg-sky"><img src="assets/images/home-requirements.png" alt=""></span>
             <span class="task-title">Requisitos y documentos</span>
             <span class="task-text">Revisa qué necesitas antes.</span>
-          </button>
+          </a>
         </li>
         <li>
           <button class="task-card" type="button" data-soon="La guía de «Resolución de errores» estará disponible pronto.">
@@ -106,6 +106,11 @@
           </button>
         </li>
       </ul>
+
+      <section id="frequent-section" class="frequent-section" aria-labelledby="frequent-title">
+        <h2 id="frequent-title" class="section-title">Trámites frecuentes</h2>
+        <ul id="frequent-list" class="task-grid"></ul>
+      </section>
 
       <div id="search-empty" class="alert alert-info" hidden>
         <span class="alert-icon" aria-hidden="true">?</span>
@@ -126,6 +131,17 @@
   <script src="assets/scripts/main.js"></script>
   <script src="assets/scripts/storage.js"></script>
   <script src="assets/scripts/forms.js"></script>
+  <script src="assets/scripts/icons.js"></script>
+  <script src="assets/scripts/procedures-data.js"></script>
+  <script src="assets/scripts/procedure-card.js"></script>
   <script src="assets/scripts/home.js"></script>
+  <!-- Sprint 2 -->
+  <script src="assets/scripts/ui-helpers.js"></script>
+  <script src="assets/scripts/bills.js"></script>
+  <script src="assets/scripts/guide-history.js"></script>
+  <script src="assets/scripts/assistant-data.js"></script>
+  <script src="assets/scripts/assistant.js"></script>
+  <script src="assets/scripts/reminders.js"></script>
+  <script src="assets/scripts/app-extras.js"></script>
 </body>
 </html>
