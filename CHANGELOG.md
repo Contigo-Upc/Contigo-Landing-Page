@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.0.1] - 2026-11-05
+
+### Agregado
+- Guía de contribución (`CONTRIBUTING.md`): cómo usar el proyecto y cómo trabajar con ramas, commits y Pull Requests.
+
 ## [1.0.0] - 2026-11-05
 
 ### Agregado
