@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guía | Contigo</title>
+  <link rel="icon" href="assets/images/logo-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/styles/main.css">
+  <link rel="stylesheet" href="assets/styles/home.css">
+  <link rel="stylesheet" href="assets/styles/procedures.css">
+</head>
+<body class="app-page guide-page">
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="home.html">
+        <img src="assets/images/logo-icon.png" alt="">
+        <span>Contigo</span>
+      </a>
+      <a id="exit-link" class="btn btn-secondary logout-button" href="procedures.html">Salir de la guía</a>
+    </div>
+  </header>
+
+  <main id="contenido" class="guide-main">
+    <div class="container guide-container">
+      <div id="practice-banner" class="alert alert-info" hidden>
+        <span class="alert-icon" aria-hidden="true">i</span>
+        <div>
+          <p class="alert-title">Estás en modo práctica</p>
+          <p class="alert-text">Usamos datos de ejemplo y no se hace ningún pago real. Puedes equivocarte sin miedo.</p>
+        </div>
+      </div>
+
+      <div class="guide-progress">
+        <div class="guide-progress-info">
+          <p id="progress-text" class="guide-progress-text"></p>
+          <p id="time-text" class="guide-time"></p>
+        </div>
+        <div id="progress-track" class="progress-track" role="progressbar" aria-label="Avance de la guía" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+          <div id="progress-bar" class="progress-bar"></div>
+        </div>
+      </div>
+
+      <section class="card guide-card" aria-live="polite">
+        <div id="step-visual" class="step-visual"></div>
+        <h1 id="step-title" class="guide-title" tabindex="-1"></h1>
+        <p id="step-text" class="guide-text"></p>
+
+        <div id="step-tip" class="alert alert-warning" hidden>
+          <span class="alert-icon" aria-hidden="true">!</span>
+          <div>
+            <p class="alert-title">Un consejo</p>
+            <p class="alert-text"></p>
+          </div>
+        </div>
+
+        <form id="step-form" class="guide-form" novalidate hidden></form>
+
+        <dl id="step-review" class="review-list" hidden></dl>
+
+        <div id="step-done" class="done-block" hidden>
+          <p class="receipt-code-line">Código de tu comprobante: <strong id="receipt-code"></strong></p>
+          <div class="guide-buttons">
+            <button id="save-receipt" class="btn btn-primary btn-block" type="button">Guardar comprobante</button>
+            <button id="share-receipt" class="btn btn-secondary btn-block" type="button">Compartir comprobante</button>
+            <a class="btn btn-secondary btn-block" href="procedures.html">Ver mis trámites</a>
+            <a class="btn-link" href="home.html">Volver al inicio</a>
+          </div>
+          <p class="home-note">
+            Este comprobante solo registra que completaste la guía. Contigo no realiza pagos por ti.
+          </p>
+        </div>
+      </section>
+
+      <div id="guide-actions" class="guide-actions">
+        <button id="back-button" class="btn btn-secondary" type="button">Anterior</button>
+        <button id="next-button" class="btn btn-primary" type="button">Siguiente</button>
+      </div>
+    </div>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+  <script src="assets/scripts/main.js"></script>
+   <script src="assets/scripts/storage.js"></script>
+  <script src="assets/scripts/forms.js"></script>
+  <script src="assets/scripts/icons.js"></script>
+  <script src="assets/scripts/procedures-data.js"></script>
+  <script src="assets/scripts/receipts.js"></script>
+  <script src="assets/scripts/guide.js"></script>
+</body>
+</html>

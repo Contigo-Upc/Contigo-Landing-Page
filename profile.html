@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi perfil | Contigo</title>
+  <link rel="icon" href="assets/images/logo-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/styles/main.css">
+  <link rel="stylesheet" href="assets/styles/home.css">
+  <link rel="stylesheet" href="assets/styles/procedures.css">
+</head>
+<body class="app-page">
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="home.html">
+        <img src="assets/images/logo-icon.png" alt="">
+        <span>Contigo</span>
+      </a>
+
+      <nav class="app-nav" aria-label="Secciones de la app">
+        <a class="app-nav-link" href="home.html">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3l9 8h-3v9h-5v-6h-2v6H6v-9H3z"/></svg>
+          <span>Inicio</span>
+        </a>
+        <a class="app-nav-link" href="procedures.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h8l5 5v13H6z"/><path d="M14 3v5h5M9 13h7M9 17h7"/></svg>
+          <span>Mis trámites</span>
+        </a>
+        <a class="app-nav-link" href="#" data-soon="La sección «Ayuda» estará disponible pronto.">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6V14M12 17.5v.01"/></svg>
+          <span>Ayuda</span>
+        </a>
+        <a class="app-nav-link is-active" href="profile.html" aria-current="page">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>
+          <span>Perfil</span>
+        </a>
+      </nav>
+
+      <button id="logout-button" class="btn btn-secondary logout-button" type="button">Cerrar sesión</button>
+    </div>
+  </header>
+
+  <main id="contenido" class="home-main">
+    <div class="container profile-container">
+      <div class="home-greeting">
+        <h1>Mi perfil</h1>
+        <p>Aquí puedes corregir tus datos cuando quieras.</p>
+      </div>
+
+      <section class="card profile-card" aria-labelledby="profile-title">
+        <h2 id="profile-title" class="visually-hidden">Editar mis datos</h2>
+
+        <div id="profile-alert" class="alert alert-success" role="status" hidden>
+          <span class="alert-icon" aria-hidden="true">✓</span>
+          <div>
+            <p class="alert-title"></p>
+            <p class="alert-text"></p>
+          </div>
+        </div>
+
+        <form id="profile-form" novalidate>
+          <div class="field">
+            <label class="field-label" for="profile-name">Nombre completo <span class="field-required" aria-hidden="true">*</span></label>
+            <input class="field-input" id="profile-name" name="name" type="text" autocomplete="name" required aria-describedby="profile-name-error">
+            <p class="field-error" id="profile-name-error"></p>
+          </div>
+
+          <div class="field">
+            <label class="field-label" for="profile-age">Edad <span class="field-required" aria-hidden="true">*</span></label>
+            <input class="field-input" id="profile-age" name="age" type="text" inputmode="numeric" maxlength="3" required aria-describedby="profile-age-error">
+            <p class="field-error" id="profile-age-error"></p>
+          </div>
+
+          <div class="field">
+            <label class="field-label" for="profile-phone">Número de celular <span class="field-required" aria-hidden="true">*</span></label>
+            <input class="field-input" id="profile-phone" name="phone" type="tel" inputmode="numeric" autocomplete="tel-national" maxlength="11" required aria-describedby="profile-phone-error">
+            <p class="field-error" id="profile-phone-error"></p>
+          </div>
+
+          <div class="field">
+            <label class="field-label" for="profile-email">Correo electrónico <span class="field-required" aria-hidden="true">*</span></label>
+            <input class="field-input" id="profile-email" name="email" type="email" autocomplete="email" required aria-describedby="profile-email-error">
+            <p class="field-error" id="profile-email-error"></p>
+          </div>
+
+          <div class="profile-actions">
+            <button class="btn btn-primary btn-block" type="submit">Guardar cambios</button>
+            <button id="profile-cancel" class="btn btn-secondary btn-block" type="button">Cancelar</button>
+          </div>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+  <script src="assets/scripts/main.js"></script>
+  <script src="assets/scripts/storage.js"></script>
+  <script src="assets/scripts/forms.js"></script>
+  <script src="assets/scripts/profile.js"></script>
+</body>
+</html>
