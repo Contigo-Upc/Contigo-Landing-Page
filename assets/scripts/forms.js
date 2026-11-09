@@ -74,7 +74,6 @@ function getFirstName(fullName) {
   return fullName.trim().split(" ")[0];
 }
 
-
 function validateName(input) {
   if (isEmpty(input.value)) {
     showFieldError(input, "Escribe tu nombre para continuar.");
@@ -123,7 +122,6 @@ function validateEmail(input) {
   }
   return true;
 }
-
 
 function setupPasswordToggles() {
   document.querySelectorAll("[data-toggle-password]").forEach(function (button) {

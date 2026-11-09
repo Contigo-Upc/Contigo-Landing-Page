@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mis pagos | Contigo</title>
+  <link rel="icon" href="assets/images/logo-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/styles/main.css">
+  <link rel="stylesheet" href="assets/styles/home.css">
+  <link rel="stylesheet" href="assets/styles/procedures.css">
+  <link rel="stylesheet" href="assets/styles/sprint2.css">
+</head>
+<body class="app-page" data-page="calendar">
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="home.html">
+        <img src="assets/images/logo-icon.png" alt="">
+        <span>Contigo</span>
+      </a>
+
+      <nav class="app-nav" aria-label="Secciones de la app">
+        <a class="app-nav-link" href="home.html">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3l9 8h-3v9h-5v-6h-2v6H6v-9H3z"/></svg>
+          <span>Inicio</span>
+        </a>
+        <a class="app-nav-link" href="procedures.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h8l5 5v13H6z"/><path d="M14 3v5h5M9 13h7M9 17h7"/></svg>
+          <span>Mis trámites</span>
+        </a>
+        <a class="app-nav-link is-active" href="calendar.html" aria-current="page" data-nav="calendar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+          <span>Pagos</span>
+        </a>
+        <a class="app-nav-link" href="#" data-open-assistant>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6V14M12 17.5v.01"/></svg>
+          <span>Ayuda</span>
+        </a>
+        <a class="app-nav-link" href="profile.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>
+          <span>Perfil</span>
+        </a>
+      </nav>
+
+      <button id="logout-button" class="btn btn-secondary logout-button" type="button">Cerrar sesión</button>
+    </div>
+  </header>
+
+  <main id="contenido" class="home-main">
+    <div class="container s2-calendar-container">
+      <div class="home-greeting">
+        <h1>Mis pagos y vencimientos</h1>
+        <p>Aquí ves tus recibos ordenados por fecha para que no se te pase ninguno.</p>
+      </div>
+
+      <!-- US-37: permiso para los avisos -->
+      <section id="notify-card" class="card s2-notify-card" aria-labelledby="notify-title">
+        <span class="s2-notify-icon" data-icon="bell" aria-hidden="true"></span>
+        <div class="s2-notify-body">
+          <h2 id="notify-title" class="s2-notify-title">Avisos antes del vencimiento</h2>
+          <p id="notify-text">Te avisamos 2 días antes y el mismo día en que vence cada pago.</p>
+        </div>
+        <button id="notify-button" class="btn btn-primary s2-small-button" type="button">Activar avisos</button>
+      </section>
+
+      <div class="s2-calendar-actions">
+        <a class="btn btn-primary" href="scan.html">
+          <span class="btn-icon s2-inline-icon" data-icon="camera"></span>
+          <span>Escanear un recibo</span>
+        </a>
+        <button id="add-bill-toggle" class="btn btn-secondary" type="button" aria-expanded="false" aria-controls="add-bill-section">Agregar un pago a mano</button>
+      </div>
+
+      <!-- US-36: registro manual de la fecha de vencimiento -->
+      <section id="add-bill-section" class="card procedure-card-box s2-add-bill" aria-labelledby="add-bill-title" hidden>
+        <h2 id="add-bill-title" tabindex="-1">Agregar un pago</h2>
+        <p class="procedure-hint">Escribe los datos tal como aparecen en tu recibo.</p>
+        <form id="add-bill-form" novalidate>
+          <div class="field">
+            <label class="field-label" for="add-service">Servicio <span class="field-required" aria-hidden="true">*</span></label>
+            <select id="add-service" class="field-input" name="service" required aria-describedby="add-service-error">
+              <option value="">Elige un servicio</option>
+            </select>
+            <p class="field-error" id="add-service-error"></p>
+          </div>
+          <div class="field">
+            <label class="field-label" id="add-number-label" for="add-number">Número de suministro o contrato <span class="field-required" aria-hidden="true">*</span></label>
+            <input id="add-number" class="field-input" name="number" type="text" inputmode="numeric" maxlength="10" autocomplete="off" required aria-describedby="add-number-hint add-number-error">
+            <p class="field-hint" id="add-number-hint">Está en la parte de arriba de tu recibo.</p>
+            <p class="field-error" id="add-number-error"></p>
+          </div>
+          <div class="field">
+            <label class="field-label" for="add-amount">Monto a pagar (S/) <span class="field-required" aria-hidden="true">*</span></label>
+            <input id="add-amount" class="field-input" name="amount" type="text" inputmode="decimal" maxlength="7" autocomplete="off" required aria-describedby="add-amount-hint add-amount-error">
+            <p class="field-hint" id="add-amount-hint">Ejemplo: 85.50</p>
+            <p class="field-error" id="add-amount-error"></p>
+          </div>
+          <div class="field">
+            <label class="field-label" for="add-due-date">Fecha de vencimiento <span class="field-required" aria-hidden="true">*</span></label>
+            <input id="add-due-date" class="field-input" name="dueDate" type="date" required aria-describedby="add-due-date-error">
+            <p class="field-error" id="add-due-date-error"></p>
+          </div>
+          <div class="s2-scan-actions">
+            <button class="btn btn-primary btn-block" type="submit">Guardar pago</button>
+            <button id="add-bill-cancel" class="btn btn-secondary btn-block" type="button">Cancelar</button>
+          </div>
+        </form>
+      </section>
+
+      <!-- US-38: vista de lista y vista mensual -->
+      <div class="s2-view-tabs" role="tablist" aria-label="Cómo quieres ver tus pagos">
+        <button id="tab-list" class="s2-view-tab" type="button" role="tab" aria-selected="true" aria-controls="panel-list">
+          <span class="s2-inline-icon" data-icon="list"></span><span>Lista</span>
+        </button>
+        <button id="tab-month" class="s2-view-tab" type="button" role="tab" aria-selected="false" aria-controls="panel-month">
+          <span class="s2-inline-icon" data-icon="calendar"></span><span>Mes</span>
+        </button>
+      </div>
+
+      <section id="panel-list" role="tabpanel" aria-labelledby="tab-list">
+        <div id="list-filter" class="chip-group" role="group" aria-label="Qué pagos mostrar">
+          <button type="button" class="chip" data-filter="open">Por pagar</button>
+          <button type="button" class="chip" data-filter="all">Todos</button>
+        </div>
+        <p id="list-status" class="visually-hidden" role="status"></p>
+        <ul id="bill-list" class="s2-bill-list"></ul>
+        <div id="bill-empty" class="s2-empty" hidden>
+          <span class="s2-empty-icon" data-icon="check" aria-hidden="true"></span>
+          <p class="s2-empty-title">No tienes pagos pendientes</p>
+          <p>Cuando escanees o agregues un recibo, aparecerá aquí con su fecha de vencimiento.</p>
+        </div>
+      </section>
+
+      <section id="panel-month" role="tabpanel" aria-labelledby="tab-month" hidden>
+        <div class="s2-month-nav">
+          <button id="month-prev" class="s2-icon-button s2-month-arrow" type="button" aria-label="Mes anterior"></button>
+          <label class="visually-hidden" for="month-select">Elige un mes</label>
+          <select id="month-select" class="field-input s2-month-select"></select>
+          <button id="month-next" class="s2-icon-button s2-month-arrow" type="button" aria-label="Mes siguiente"></button>
+        </div>
+        <div class="s2-month-grid-wrap">
+          <div id="month-grid" class="s2-month-grid" role="grid" aria-label="Calendario del mes"></div>
+        </div>
+        <div class="s2-month-list-head">
+          <h2 id="month-list-title" class="section-title"></h2>
+          <button id="month-show-all" class="btn-link" type="button" hidden>Ver todo el mes</button>
+        </div>
+        <ul id="month-bill-list" class="s2-bill-list"></ul>
+        <div id="month-empty" class="s2-empty" hidden>
+          <span class="s2-empty-icon" data-icon="calendar" aria-hidden="true"></span>
+          <p id="month-empty-text" class="s2-empty-title">No tienes pagos en este mes</p>
+        </div>
+      </section>
+
+      <!-- US-48 dentro del calendario: trámites pendientes -->
+      <section id="calendar-attempts" class="receipt-section" aria-labelledby="calendar-attempts-title" hidden>
+        <h2 id="calendar-attempts-title" class="section-title">Trámites que dejaste a medias</h2>
+        <ul id="calendar-attempt-list" class="receipt-list"></ul>
+      </section>
+
+      <p class="home-note">
+        Contigo te recuerda tus pagos, pero no los realiza por ti. Marca cada recibo como pagado cuando tu empresa te lo confirme.
+      </p>
+    </div>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+  <script src="assets/scripts/main.js"></script>
+  <script src="assets/scripts/storage.js"></script>
+  <script src="assets/scripts/forms.js"></script>
+  <script src="assets/scripts/icons.js"></script>
+  <script src="assets/scripts/procedures-data.js"></script>
+  <script src="assets/scripts/ui-helpers.js"></script>
+  <script src="assets/scripts/bills.js"></script>
+  <script src="assets/scripts/guide-history.js"></script>
+  <script src="assets/scripts/assistant-data.js"></script>
+  <script src="assets/scripts/assistant.js"></script>
+  <script src="assets/scripts/reminders.js"></script>
+  <script src="assets/scripts/app-extras.js"></script>
+  <script src="assets/scripts/calendar.js"></script>
+</body>
+</html>
