@@ -3,6 +3,8 @@ const SESSION_KEY = "contigo.session";
 const PENDING_KEY = "contigo.pending";
 const RECEIPTS_KEY = "contigo.receipts";
 const GUIDE_KEY = "contigo.guide";
+const BILLS_KEY = "contigo.bills";
+const PROGRESS_KEY = "contigo.progress";
 function readJson(storage, key) {
   try {
     const value = storage.getItem(key);
@@ -144,4 +146,65 @@ function clearGuide() {
     sessionStorage.removeItem(GUIDE_KEY);
   } catch (error) {
   }
+}
+
+function getAllBills() {
+  return readJson(localStorage, BILLS_KEY) || [];
+}
+
+function getBills(userId) {
+  return getAllBills().filter(function (bill) {
+    return bill.userId === userId;
+  });
+}
+
+function findBill(billId) {
+  return getAllBills().find(function (bill) {
+    return bill.id === billId;
+  });
+}
+
+function saveBill(bill) {
+  const bills = getAllBills().filter(function (item) {
+    return item.id !== bill.id;
+  });
+  bills.push(bill);
+  writeJson(localStorage, BILLS_KEY, bills);
+  return bill;
+}
+
+function getAllProgress() {
+  return readJson(localStorage, PROGRESS_KEY) || [];
+}
+
+function getProgressList(userId) {
+  return getAllProgress()
+    .filter(function (progress) {
+      return progress.userId === userId;
+    })
+    .sort(function (a, b) {
+      return new Date(b.updatedAt) - new Date(a.updatedAt);
+    });
+}
+
+function getProgress(userId, procedureId) {
+  return getAllProgress().find(function (progress) {
+    return progress.userId === userId && progress.id === procedureId;
+  });
+}
+
+function saveProgress(progress) {
+  const list = getAllProgress().filter(function (item) {
+    return !(item.userId === progress.userId && item.id === progress.id);
+  });
+  progress.updatedAt = new Date().toISOString();
+  list.push(progress);
+  writeJson(localStorage, PROGRESS_KEY, list);
+}
+
+function clearProgress(userId, procedureId) {
+  const list = getAllProgress().filter(function (item) {
+    return !(item.userId === userId && item.id === procedureId);
+  });
+  writeJson(localStorage, PROGRESS_KEY, list);
 }

@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
   icon.innerHTML = getIcon(procedure.icon);
 
   setupRequirements(procedure);
-  setupStartButtons(procedure);
+  setupStartButtons(procedure, user);
 });
 
 function setupRequirements(procedure) {
@@ -62,7 +62,7 @@ function setupRequirements(procedure) {
   updateStatus();
 }
 
-function setupStartButtons(procedure) {
+function setupStartButtons(procedure, user) {
   const start = document.getElementById("start-guide");
   const practice = document.getElementById("start-practice");
 
@@ -70,6 +70,20 @@ function setupStartButtons(procedure) {
   practice.href = "guide.html?id=" + procedure.id + "&mode=practice";
 
   [start, practice].forEach(function (button) {
-    button.addEventListener("click", clearGuide);
+    button.addEventListener("click", function () {
+      clearProgress(user.id, procedure.id);
+    });
   });
+
+  const progress = getProgress(user.id, procedure.id);
+  if (progress && !progress.completed && progress.index > 0) {
+    const resume = document.createElement("a");
+    resume.className = "btn btn-primary btn-block";
+    resume.href = "guide.html?id=" + procedure.id + "&mode=" + progress.mode;
+    resume.textContent = "Continuar donde lo dejaste (paso " + (progress.index + 1) + " de " + progress.total + ")";
+
+    start.classList.replace("btn-primary", "btn-secondary");
+    start.textContent = "Empezar de nuevo";
+    start.parentElement.prepend(resume);
+  }
 }

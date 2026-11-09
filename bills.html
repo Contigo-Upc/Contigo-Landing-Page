@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mis recibos | Contigo</title>
+  <link rel="icon" href="assets/images/logo-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/styles/main.css">
+  <link rel="stylesheet" href="assets/styles/home.css">
+  <link rel="stylesheet" href="assets/styles/procedures.css">
+  <link rel="stylesheet" href="assets/styles/bills.css">
+</head>
+<body class="app-page">
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="home.html">
+        <img src="assets/images/logo-icon.png" alt="">
+        <span>Contigo</span>
+      </a>
+
+      <nav class="app-nav" aria-label="Secciones de la app">
+        <a class="app-nav-link" href="home.html">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3l9 8h-3v9h-5v-6h-2v6H6v-9H3z"/></svg>
+          <span>Inicio</span>
+        </a>
+        <a class="app-nav-link" href="procedures.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h8l5 5v13H6z"/><path d="M14 3v5h5M9 13h7M9 17h7"/></svg>
+          <span>Mis trámites</span>
+        </a>
+        <a class="app-nav-link" href="assistant.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6V14M12 17.5v.01"/></svg>
+          <span>Ayuda</span>
+        </a>
+        <a class="app-nav-link" href="profile.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>
+          <span>Perfil</span>
+        </a>
+      </nav>
+
+      <button id="logout-button" class="btn btn-secondary logout-button" type="button">Cerrar sesión</button>
+    </div>
+  </header>
+
+  <main id="contenido" class="home-main">
+    <div class="container bills-container">
+      <div class="home-greeting">
+        <h1>Mis recibos</h1>
+        <p>Revisa el estado de tus recibos y cuándo vencen. Hoy es <strong id="today-text"></strong>.</p>
+      </div>
+
+      <div id="reminder-list" class="reminder-list" hidden></div>
+
+      <div class="bills-actions">
+        <a class="btn btn-primary" href="scan.html">Escanear un recibo</a>
+        <a class="btn btn-secondary" href="scan.html?manual=1">Agregar a mano</a>
+        <a class="btn btn-secondary" href="calendar.html">Ver calendario</a>
+      </div>
+
+      <div id="device-box" class="card device-box" hidden>
+        <p><strong>Recibe los avisos en este dispositivo.</strong> Te avisamos 2 días antes y el día del vencimiento si tu pago sigue pendiente.</p>
+        <button id="device-button" class="btn btn-secondary" type="button">Activar avisos</button>
+      </div>
+
+      <div id="status-chips" class="chip-group" role="group" aria-label="Filtrar por estado"></div>
+      <p id="bills-status" class="visually-hidden" role="status"></p>
+
+      <ul id="bill-list" class="bill-list"></ul>
+
+      <div id="bills-empty" class="receipt-empty" hidden>
+        <p id="bills-empty-text">Aún no tienes recibos. Escanea uno o agrégalo a mano para que te avisemos antes de que venza.</p>
+      </div>
+
+      <p class="home-note">
+        Recuerda: Contigo te orienta paso a paso, pero no realiza pagos por ti. El estado de tus recibos lo marcas tú.
+      </p>
+    </div>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+  <script src="assets/scripts/main.js"></script>
+  <script src="assets/scripts/storage.js"></script>
+  <script src="assets/scripts/forms.js"></script>
+  <script src="assets/scripts/icons.js"></script>
+  <script src="assets/scripts/dates.js"></script>
+  <script src="assets/scripts/procedures-data.js"></script>
+  <script src="assets/scripts/guide-support-data.js"></script>
+  <script src="assets/scripts/bills-data.js"></script>
+  <script src="assets/scripts/reminders.js"></script>
+  <script src="assets/scripts/bills.js"></script>
+</body>
+</html>

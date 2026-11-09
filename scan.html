@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Escanear recibo | Contigo</title>
+  <link rel="icon" href="assets/images/logo-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/styles/main.css">
+  <link rel="stylesheet" href="assets/styles/home.css">
+  <link rel="stylesheet" href="assets/styles/procedures.css">
+  <link rel="stylesheet" href="assets/styles/bills.css">
+</head>
+<body class="app-page">
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="home.html">
+        <img src="assets/images/logo-icon.png" alt="">
+        <span>Contigo</span>
+      </a>
+
+      <nav class="app-nav" aria-label="Secciones de la app">
+        <a class="app-nav-link" href="home.html">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3l9 8h-3v9h-5v-6h-2v6H6v-9H3z"/></svg>
+          <span>Inicio</span>
+        </a>
+        <a class="app-nav-link" href="procedures.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h8l5 5v13H6z"/><path d="M14 3v5h5M9 13h7M9 17h7"/></svg>
+          <span>Mis trámites</span>
+        </a>
+        <a class="app-nav-link" href="assistant.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6V14M12 17.5v.01"/></svg>
+          <span>Ayuda</span>
+        </a>
+        <a class="app-nav-link" href="profile.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>
+          <span>Perfil</span>
+        </a>
+      </nav>
+
+      <button id="logout-button" class="btn btn-secondary logout-button" type="button">Cerrar sesión</button>
+    </div>
+  </header>
+
+  <main id="contenido" class="home-main">
+    <div class="container scan-container">
+      <a class="btn-link back-to-list" href="bills.html">← Ver mis recibos</a>
+
+      <section id="view-start" class="scan-view" aria-labelledby="start-title">
+        <h1 id="start-title" tabindex="-1">Escanear mi recibo</h1>
+        <p class="scan-intro">Toma una foto de tu recibo y leeremos los datos por ti. Antes de guardarlos, podrás revisarlos y corregirlos.</p>
+
+        <fieldset class="service-picker">
+          <legend class="field-label">¿De qué es tu recibo?</legend>
+          <div id="service-options" class="chip-group"></div>
+        </fieldset>
+
+        <div class="scan-actions">
+          <label class="btn btn-primary btn-block" for="photo-input">
+            <span id="camera-icon" class="btn-icon"></span>
+            Tomar o subir una foto
+          </label>
+          <input id="photo-input" class="visually-hidden" type="file" accept="image/*" capture="environment">
+          <button id="manual-button" class="btn btn-secondary btn-block" type="button">Escribir los datos a mano</button>
+        </div>
+
+        <div class="card sample-box">
+          <h2>¿Quieres probar?</h2>
+          <p>Usa un recibo de ejemplo para ver cómo funciona.</p>
+          <div class="sample-buttons">
+            <button class="btn btn-secondary" type="button" data-sample="clear">Recibo de ejemplo</button>
+            <button class="btn btn-secondary" type="button" data-sample="blurry">Ejemplo borroso</button>
+            <button class="btn btn-secondary" type="button" data-sample="dark">Ejemplo con poca luz</button>
+          </div>
+        </div>
+
+        <p class="home-note">Simulación: la lectura de datos es de prueba y tu foto no sale de este dispositivo.</p>
+      </section>
+
+      <section id="view-preview" class="scan-view" aria-labelledby="preview-title" hidden>
+        <h1 id="preview-title" tabindex="-1">¿Se ve bien tu recibo?</h1>
+        <p class="scan-intro">Asegúrate de que se lean los números.</p>
+        <img id="preview-image" class="receipt-photo" alt="Foto de tu recibo">
+        <div class="scan-actions">
+          <button id="use-photo" class="btn btn-primary btn-block" type="button">Usar esta foto</button>
+          <button class="btn btn-secondary btn-block" type="button" data-retake>Volver a tomar</button>
+        </div>
+      </section>
+
+      <section id="view-reading" class="scan-view reading-view" aria-labelledby="reading-title" hidden>
+        <div class="spinner" aria-hidden="true"></div>
+        <h1 id="reading-title" tabindex="-1">Leyendo tu recibo...</h1>
+        <p>Espera un momento, por favor.</p>
+      </section>
+
+      <section id="view-problem" class="scan-view" aria-labelledby="problem-title" hidden>
+        <h1 id="problem-title" tabindex="-1">Revisa tu foto</h1>
+        <img id="problem-image" class="receipt-photo" alt="Foto de tu recibo">
+        <div class="alert alert-warning" role="alert">
+          <span class="alert-icon" aria-hidden="true">!</span>
+          <div>
+            <p id="problem-heading" class="alert-title"></p>
+            <p id="problem-text" class="alert-text"></p>
+          </div>
+        </div>
+        <div class="scan-actions">
+          <button class="btn btn-primary btn-block" type="button" data-retake>Volver a tomar</button>
+          <button id="problem-manual" class="btn btn-secondary btn-block" type="button">Ingresar los datos a mano</button>
+        </div>
+      </section>
+
+      <section id="view-result" class="scan-view" aria-labelledby="result-title" hidden>
+        <h1 id="result-title" tabindex="-1">¡Leímos tu recibo!</h1>
+        <p id="result-intro" class="scan-intro">Revisa que los datos sean los correctos. Si algo no coincide con tu recibo, corrígelo.</p>
+
+        <div id="date-alert" class="alert alert-info" hidden>
+          <span class="alert-icon" aria-hidden="true">i</span>
+          <div>
+            <p class="alert-title">No pudimos detectar la fecha</p>
+            <p class="alert-text">Escríbela para añadirla a tu calendario y avisarte antes de que venza.</p>
+          </div>
+        </div>
+
+        <div id="result-summary" class="alert alert-error" role="alert" hidden>
+          <span class="alert-icon" aria-hidden="true">!</span>
+          <div>
+            <p class="alert-title"></p>
+            <ul class="summary-list"></ul>
+          </div>
+        </div>
+
+        <form id="result-form" novalidate>
+          <div class="field">
+            <label id="number-label" class="field-label" for="bill-number">Número de suministro <span class="field-required" aria-hidden="true">*</span></label>
+            <input class="field-input" id="bill-number" name="number" type="text" inputmode="numeric" autocomplete="off" required aria-describedby="bill-number-hint bill-number-error">
+            <p class="field-hint" id="bill-number-hint"></p>
+            <p class="field-error" id="bill-number-error"></p>
+          </div>
+
+          <div class="field">
+            <label class="field-label" for="bill-amount">Monto a pagar (S/) <span class="field-required" aria-hidden="true">*</span></label>
+            <input class="field-input" id="bill-amount" name="amount" type="text" inputmode="decimal" maxlength="7" autocomplete="off" required aria-describedby="bill-amount-hint bill-amount-error">
+            <p class="field-hint" id="bill-amount-hint">Ejemplo: 85.50</p>
+            <p class="field-error" id="bill-amount-error"></p>
+          </div>
+
+          <div class="field">
+            <label class="field-label" for="bill-date">Fecha de vencimiento <span class="field-required" aria-hidden="true">*</span></label>
+            <input class="field-input" id="bill-date" name="dueDate" type="date" required aria-describedby="bill-date-hint bill-date-error">
+            <p class="field-hint" id="bill-date-hint">Día, mes y año. Está en tu recibo como «Fecha de vencimiento».</p>
+            <p class="field-error" id="bill-date-error"></p>
+          </div>
+
+          <div class="scan-actions">
+            <button class="btn btn-primary btn-block" type="submit">Guardar recibo</button>
+            <button class="btn btn-secondary btn-block" type="button" data-retake>Cancelar</button>
+          </div>
+        </form>
+      </section>
+
+      <section id="view-saved" class="scan-view saved-view" aria-labelledby="saved-title" hidden>
+        <div class="success-check" aria-hidden="true"></div>
+        <h1 id="saved-title" tabindex="-1">¡Guardamos tu recibo!</h1>
+        <p id="saved-text"></p>
+        <div class="scan-actions">
+          <a id="pay-with-guide" class="btn btn-primary btn-block" href="procedures.html">Pagar con la guía</a>
+          <a class="btn btn-secondary btn-block" href="bills.html">Ver mis recibos</a>
+          <a class="btn btn-secondary btn-block" href="calendar.html">Ver mi calendario</a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <dialog id="amount-dialog" class="confirm-dialog" aria-labelledby="amount-dialog-title">
+    <h2 id="amount-dialog-title">¿Es correcto este monto?</h2>
+    <p id="amount-dialog-text"></p>
+    <div class="dialog-buttons">
+      <button id="amount-confirm" class="btn btn-primary btn-block" type="button">Sí, es correcto</button>
+      <button id="amount-fix" class="btn btn-secondary btn-block" type="button">Corregir</button>
+    </div>
+  </dialog>
+
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+  <script src="assets/scripts/main.js"></script>
+  <script src="assets/scripts/storage.js"></script>
+  <script src="assets/scripts/forms.js"></script>
+  <script src="assets/scripts/icons.js"></script>
+  <script src="assets/scripts/dates.js"></script>
+  <script src="assets/scripts/procedures-data.js"></script>
+  <script src="assets/scripts/guide-support-data.js"></script>
+  <script src="assets/scripts/bills-data.js"></script>
+  <script src="assets/scripts/image-quality.js"></script>
+  <script src="assets/scripts/sample-receipt.js"></script>
+  <script src="assets/scripts/scan.js"></script>
+</body>
+</html>

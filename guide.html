@@ -37,61 +37,140 @@
         </div>
       </div>
 
-      <div class="guide-progress">
-        <div class="guide-progress-info">
-          <p id="progress-text" class="guide-progress-text"></p>
-          <p id="time-text" class="guide-time"></p>
+      <div id="guide-view">
+        <div class="guide-progress">
+          <div class="guide-progress-info">
+            <p id="progress-text" class="guide-progress-text"></p>
+            <p id="time-text" class="guide-time"></p>
+          </div>
+          <div id="progress-track" class="progress-track" role="progressbar" aria-label="Avance de la guía" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+            <div id="progress-bar" class="progress-bar"></div>
+          </div>
         </div>
-        <div id="progress-track" class="progress-track" role="progressbar" aria-label="Avance de la guía" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-          <div id="progress-bar" class="progress-bar"></div>
+
+        <section class="card guide-card" aria-live="polite">
+          <div id="step-visual" class="step-visual"></div>
+          <h1 id="step-title" class="guide-title" tabindex="-1"></h1>
+          <p id="step-text" class="guide-text"></p>
+
+          <div class="guide-tools">
+            <button id="listen-button" class="tool-button" type="button"></button>
+            <button id="help-button" class="tool-button" type="button" aria-expanded="false" aria-controls="step-help"></button>
+            <a id="assistant-link" class="tool-button" href="assistant.html"></a>
+          </div>
+
+          <div id="audio-panel" class="audio-panel" hidden>
+            <p class="audio-status"><span id="audio-icon" class="audio-icon"></span><span id="audio-label">Escuchando...</span></p>
+            <div class="audio-track"><div id="audio-bar" class="audio-bar"></div></div>
+            <div class="audio-buttons">
+              <button id="audio-pause" class="btn btn-secondary" type="button">Pausar</button>
+              <button id="audio-stop" class="btn btn-secondary" type="button">Detener</button>
+            </div>
+          </div>
+
+          <div id="step-help" class="alert alert-info help-panel" hidden>
+            <span class="alert-icon" aria-hidden="true">?</span>
+            <div>
+              <p id="help-title" class="alert-title">Ayuda con este paso</p>
+              <p id="help-text" class="alert-text"></p>
+            </div>
+          </div>
+
+          <div id="term-panel" class="term-panel" role="region" aria-label="Significado de la palabra" hidden>
+            <p class="term-title"></p>
+            <p class="term-short"></p>
+            <p class="term-more" hidden></p>
+            <div class="term-actions">
+              <button class="btn-link term-more-button" type="button">Explicar más</button>
+              <button class="btn btn-secondary term-close" type="button">Entendido</button>
+            </div>
+          </div>
+
+          <div id="step-tip" class="alert alert-warning" hidden>
+            <span class="alert-icon" aria-hidden="true">!</span>
+            <div>
+              <p class="alert-title">Un consejo</p>
+              <p class="alert-text"></p>
+            </div>
+          </div>
+
+          <div id="form-summary" class="alert alert-error" role="alert" hidden>
+            <span class="alert-icon" aria-hidden="true">!</span>
+            <div>
+              <p class="alert-title"></p>
+              <ul class="summary-list"></ul>
+            </div>
+          </div>
+
+          <form id="step-form" class="guide-form" novalidate hidden></form>
+
+          <dl id="step-review" class="review-list" hidden></dl>
+
+          <div id="step-done" class="done-block" hidden>
+            <p class="receipt-code-line">Código de tu comprobante: <strong id="receipt-code"></strong></p>
+
+            <section id="done-pending" class="done-section" aria-labelledby="done-pending-title" hidden>
+              <h2 id="done-pending-title">Lo que te falta hacer</h2>
+              <ul id="done-pending-list" class="pending-list"></ul>
+            </section>
+
+            <section id="done-verify" class="done-section" aria-labelledby="done-verify-title" hidden>
+              <h2 id="done-verify-title">Cómo verificar en la plataforma oficial</h2>
+              <ol id="done-verify-list" class="verify-list"></ol>
+              <a id="official-link" class="btn-link" href="#" target="_blank" rel="noopener" hidden></a>
+            </section>
+
+            <div class="guide-buttons">
+              <button id="save-receipt" class="btn btn-primary btn-block" type="button">Guardar comprobante</button>
+              <button id="share-receipt" class="btn btn-secondary btn-block" type="button">Compartir comprobante</button>
+              <a id="bills-link" class="btn btn-secondary btn-block" href="bills.html" hidden>Ver mis recibos</a>
+              <a class="btn btn-secondary btn-block" href="procedures.html">Ver mis trámites</a>
+              <a class="btn-link" href="home.html">Volver al inicio</a>
+            </div>
+            <p class="home-note">
+              Este comprobante solo registra que completaste la guía. Contigo no realiza pagos por ti.
+            </p>
+          </div>
+        </section>
+
+        <div id="guide-actions" class="guide-actions">
+          <button id="back-button" class="btn btn-secondary" type="button">Anterior</button>
+          <button id="next-button" class="btn btn-primary" type="button">Siguiente</button>
         </div>
       </div>
 
-      <section class="card guide-card" aria-live="polite">
-        <div id="step-visual" class="step-visual"></div>
-        <h1 id="step-title" class="guide-title" tabindex="-1"></h1>
-        <p id="step-text" class="guide-text"></p>
-
-        <div id="step-tip" class="alert alert-warning" hidden>
-          <span class="alert-icon" aria-hidden="true">!</span>
-          <div>
-            <p class="alert-title">Un consejo</p>
-            <p class="alert-text"></p>
-          </div>
-        </div>
-
-        <form id="step-form" class="guide-form" novalidate hidden></form>
-
-        <dl id="step-review" class="review-list" hidden></dl>
-
-        <div id="step-done" class="done-block" hidden>
-          <p class="receipt-code-line">Código de tu comprobante: <strong id="receipt-code"></strong></p>
-          <div class="guide-buttons">
-            <button id="save-receipt" class="btn btn-primary btn-block" type="button">Guardar comprobante</button>
-            <button id="share-receipt" class="btn btn-secondary btn-block" type="button">Compartir comprobante</button>
-            <a class="btn btn-secondary btn-block" href="procedures.html">Ver mis trámites</a>
-            <a class="btn-link" href="home.html">Volver al inicio</a>
-          </div>
-          <p class="home-note">
-            Este comprobante solo registra que completaste la guía. Contigo no realiza pagos por ti.
-          </p>
+      <section id="pending-panel" class="card pending-panel" aria-labelledby="pending-title" hidden>
+        <h1 id="pending-title" tabindex="-1">Te quedan pasos pendientes</h1>
+        <p>Puedes retomarlos cuando quieras. Lo que ya hiciste se queda guardado.</p>
+        <ul id="pending-steps" class="step-status-list"></ul>
+        <div class="guide-buttons">
+          <button id="pending-return" class="btn btn-primary btn-block" type="button">Regresar al paso pendiente</button>
+          <a id="pending-exit" class="btn btn-secondary btn-block" href="procedures.html">Salir y guardar mi avance</a>
         </div>
       </section>
-
-      <div id="guide-actions" class="guide-actions">
-        <button id="back-button" class="btn btn-secondary" type="button">Anterior</button>
-        <button id="next-button" class="btn btn-primary" type="button">Siguiente</button>
-      </div>
     </div>
   </main>
+
+  <dialog id="amount-dialog" class="confirm-dialog" aria-labelledby="amount-dialog-title">
+    <h2 id="amount-dialog-title">¿Es correcto este monto?</h2>
+    <p id="amount-dialog-text"></p>
+    <div class="dialog-buttons">
+      <button id="amount-confirm" class="btn btn-primary btn-block" type="button">Sí, es correcto</button>
+      <button id="amount-fix" class="btn btn-secondary btn-block" type="button">Corregir</button>
+    </div>
+  </dialog>
 
   <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
 
   <script src="assets/scripts/main.js"></script>
-   <script src="assets/scripts/storage.js"></script>
+  <script src="assets/scripts/storage.js"></script>
   <script src="assets/scripts/forms.js"></script>
   <script src="assets/scripts/icons.js"></script>
   <script src="assets/scripts/procedures-data.js"></script>
+  <script src="assets/scripts/guide-support-data.js"></script>
+  <script src="assets/scripts/bills-data.js"></script>
+  <script src="assets/scripts/glossary.js"></script>
+  <script src="assets/scripts/speech.js"></script>
   <script src="assets/scripts/receipts.js"></script>
   <script src="assets/scripts/guide.js"></script>
 </body>
