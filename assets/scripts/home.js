@@ -6,20 +6,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
   document.getElementById("greeting").textContent = "¡Hola, " + user.name + "!";
 
+  renderFrequentProcedures();
   setupSearch();
-  setupLogout();
 });
 
-function simplifyText(text) {
-  return text
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/\p{Diacritic}/gu, "");
+function renderFrequentProcedures() {
+  const list = document.getElementById("frequent-list");
+
+  PROCEDURES.filter(function (procedure) {
+    return procedure.frequent;
+  }).forEach(function (procedure) {
+    list.appendChild(createProcedureCard(procedure));
+  });
 }
 
 function setupSearch() {
   const input = document.getElementById("search-input");
-  const items = document.querySelectorAll("#task-list li");
+  const items = document.querySelectorAll("#task-list li, #frequent-list li");
+  const frequentSection = document.getElementById("frequent-section");
+  const frequentItems = document.querySelectorAll("#frequent-list li");
   const empty = document.getElementById("search-empty");
   const status = document.getElementById("search-status");
 
@@ -35,6 +40,11 @@ function setupSearch() {
       }
     });
 
+    const visibleFrequent = Array.from(frequentItems).filter(function (item) {
+      return !item.hidden;
+    });
+    frequentSection.hidden = visibleFrequent.length === 0;
+
     empty.hidden = visibleCount > 0;
 
     if (query === "") {
@@ -44,12 +54,5 @@ function setupSearch() {
     } else {
       status.textContent = visibleCount === 1 ? "Encontramos 1 trámite." : "Encontramos " + visibleCount + " trámites.";
     }
-  });
-}
-
-function setupLogout() {
-  document.getElementById("logout-button").addEventListener("click", function () {
-    endSession();
-    window.location.href = "index.html";
   });
 }
