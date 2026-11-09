@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Escanear recibo | Contigo</title>
+  <link rel="icon" href="assets/images/logo-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/styles/main.css">
+  <link rel="stylesheet" href="assets/styles/home.css">
+  <link rel="stylesheet" href="assets/styles/procedures.css">
+  <link rel="stylesheet" href="assets/styles/sprint2.css">
+</head>
+<body class="app-page" data-page="scan">
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="home.html">
+        <img src="assets/images/logo-icon.png" alt="">
+        <span>Contigo</span>
+      </a>
+
+      <nav class="app-nav" aria-label="Secciones de la app">
+        <a class="app-nav-link" href="home.html">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3l9 8h-3v9h-5v-6h-2v6H6v-9H3z"/></svg>
+          <span>Inicio</span>
+        </a>
+        <a class="app-nav-link" href="procedures.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h8l5 5v13H6z"/><path d="M14 3v5h5M9 13h7M9 17h7"/></svg>
+          <span>Mis trámites</span>
+        </a>
+        <a class="app-nav-link" href="calendar.html" data-nav="calendar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+          <span>Pagos</span>
+        </a>
+        <a class="app-nav-link" href="#" data-open-assistant>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6V14M12 17.5v.01"/></svg>
+          <span>Ayuda</span>
+        </a>
+        <a class="app-nav-link" href="profile.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>
+          <span>Perfil</span>
+        </a>
+      </nav>
+
+      <button id="logout-button" class="btn btn-secondary logout-button" type="button">Cerrar sesión</button>
+    </div>
+  </header>
+
+  <main id="contenido" class="home-main">
+    <div class="container procedure-container">
+      <a class="btn-link back-to-list" href="home.html">← Volver al inicio</a>
+
+      <div class="home-greeting">
+        <h1>Escanear recibo</h1>
+        <p>Toma una foto de tu recibo y leemos los datos por ti. Luego tú los revisas.</p>
+      </div>
+
+      <!-- Paso 1: foto (US-16 y US-18) -->
+      <section id="scan-step-photo" class="card procedure-card-box s2-scan-step" aria-labelledby="scan-photo-title">
+        <h2 id="scan-photo-title">1. Toma una foto de tu recibo</h2>
+
+        <div class="field s2-scan-service">
+          <label class="field-label" for="scan-service">¿De qué servicio es tu recibo? <span class="field-required" aria-hidden="true">*</span></label>
+          <select id="scan-service" class="field-input" name="service" required aria-describedby="scan-service-error">
+            <option value="">Elige un servicio</option>
+          </select>
+          <p class="field-error" id="scan-service-error"></p>
+        </div>
+
+        <ul class="s2-photo-tips" aria-label="Consejos para una buena foto">
+          <li>Pon el recibo sobre una mesa, bien estirado.</li>
+          <li>Busca buena luz, sin sombras encima.</li>
+          <li>Que se vea todo el recibo y no te muevas al tomar la foto.</li>
+        </ul>
+
+        <input id="scan-file" class="visually-hidden" type="file" accept="image/*" capture="environment">
+        <label id="scan-file-label" class="btn btn-primary btn-block" for="scan-file">
+          <span class="btn-icon s2-inline-icon" data-icon="camera"></span>
+          <span>Tomar o elegir una foto</span>
+        </label>
+
+        <figure id="scan-preview" class="s2-scan-preview" hidden>
+          <img id="scan-preview-image" alt="Foto de tu recibo">
+          <figcaption id="scan-preview-caption" class="field-hint"></figcaption>
+        </figure>
+
+        <div id="scan-quality-alert" class="alert alert-warning" role="alert" hidden>
+          <span class="alert-icon" aria-hidden="true">!</span>
+          <div>
+            <p class="alert-title"></p>
+            <p class="alert-text"></p>
+          </div>
+        </div>
+
+        <div class="s2-scan-actions">
+          <button id="scan-read" class="btn btn-primary btn-block" type="button" hidden>Leer mi recibo</button>
+          <button id="scan-retake" class="btn btn-primary btn-block" type="button" hidden>Volver a tomar la foto</button>
+          <button id="scan-cancel" class="btn btn-secondary btn-block" type="button" hidden>Cancelar</button>
+        </div>
+
+        <details class="s2-demo">
+          <summary>¿No tienes tu recibo a la mano? Prueba con un ejemplo</summary>
+          <p class="field-hint">Son fotos de ejemplo para practicar. No usan datos reales.</p>
+          <div class="s2-demo-buttons">
+            <button type="button" class="chip" data-demo="clear">Recibo claro</button>
+            <button type="button" class="chip" data-demo="partial">Recibo con datos tapados</button>
+            <button type="button" class="chip" data-demo="blurry">Foto borrosa</button>
+            <button type="button" class="chip" data-demo="dark">Foto con poca luz</button>
+          </div>
+        </details>
+      </section>
+
+      <section id="scan-loading" class="card s2-scan-loading" hidden aria-live="polite">
+        <span class="s2-spinner" aria-hidden="true"></span>
+        <p id="scan-loading-text">Leyendo tu recibo…</p>
+      </section>
+
+      <!-- Paso 2: revisar y corregir (US-17, US-24, US-32, US-33, US-36) -->
+      <section id="scan-step-review" class="card procedure-card-box s2-scan-step" aria-labelledby="scan-review-title" hidden>
+        <h2 id="scan-review-title" tabindex="-1">2. Revisa los datos que leímos</h2>
+        <p class="procedure-hint">Compáralos con tu recibo. Si alguno está mal, corrígelo aquí mismo.</p>
+
+        <div id="scan-partial-alert" class="alert alert-warning" hidden>
+          <span class="alert-icon" aria-hidden="true">!</span>
+          <div>
+            <p class="alert-title"></p>
+            <p class="alert-text"></p>
+          </div>
+        </div>
+
+        <form id="scan-form" novalidate>
+          <div class="field" data-field="number">
+            <div class="s2-label-row">
+              <label class="field-label" id="scan-number-label" for="scan-number">Número de suministro <span class="field-required" aria-hidden="true">*</span></label>
+              <span class="s2-read-tag" id="scan-number-tag"></span>
+            </div>
+            <input class="field-input" id="scan-number" name="number" type="text" inputmode="numeric" autocomplete="off" required aria-describedby="scan-number-hint scan-number-error">
+            <p class="field-hint" id="scan-number-hint"></p>
+            <p class="field-error" id="scan-number-error"></p>
+          </div>
+
+          <div class="field" data-field="amount">
+            <div class="s2-label-row">
+              <label class="field-label" for="scan-amount">Monto a pagar (S/) <span class="field-required" aria-hidden="true">*</span></label>
+              <span class="s2-read-tag" id="scan-amount-tag"></span>
+            </div>
+            <input class="field-input" id="scan-amount" name="amount" type="text" inputmode="decimal" maxlength="7" autocomplete="off" required aria-describedby="scan-amount-hint scan-amount-error">
+            <p class="field-hint" id="scan-amount-hint">Como aparece en «Total a pagar». Ejemplo: 85.50</p>
+            <p class="field-error" id="scan-amount-error"></p>
+          </div>
+
+          <div class="field" data-field="dueDate">
+            <div class="s2-label-row">
+              <label class="field-label" for="scan-due-date">Fecha de vencimiento <span class="field-required" aria-hidden="true">*</span></label>
+              <span class="s2-read-tag" id="scan-due-date-tag"></span>
+            </div>
+            <input class="field-input" id="scan-due-date" name="dueDate" type="date" required aria-describedby="scan-due-date-hint scan-due-date-error">
+            <p class="field-hint" id="scan-due-date-hint">Búscala cerca del total. Suele decir «Vence» o «Fecha de vencimiento».</p>
+            <p class="field-error" id="scan-due-date-error"></p>
+          </div>
+
+          <div class="s2-scan-actions">
+            <button class="btn btn-primary btn-block" type="submit">Guardar mi recibo</button>
+            <button id="scan-review-retake" class="btn btn-secondary btn-block" type="button">Volver a tomar la foto</button>
+            <button id="scan-review-cancel" class="btn-link" type="button">Cancelar y no guardar nada</button>
+          </div>
+        </form>
+      </section>
+
+      <!-- Paso 3: listo -->
+      <section id="scan-step-done" class="card procedure-card-box s2-scan-step" aria-labelledby="scan-done-title" hidden>
+        <div class="alert alert-success">
+          <span class="alert-icon" aria-hidden="true">✓</span>
+          <div>
+            <h2 id="scan-done-title" class="alert-title" tabindex="-1">Guardamos tu recibo</h2>
+            <p class="alert-text" id="scan-done-text"></p>
+          </div>
+        </div>
+        <dl id="scan-done-summary" class="review-list"></dl>
+        <div class="s2-scan-actions">
+          <a id="scan-start-guide" class="btn btn-primary btn-block" href="#">Empezar la guía de pago</a>
+          <a id="scan-view-calendar" class="btn btn-secondary btn-block" href="calendar.html">Ver mis pagos y vencimientos</a>
+          <button id="scan-again" class="btn-link" type="button">Escanear otro recibo</button>
+        </div>
+      </section>
+
+      <p class="home-note">
+        La foto solo se usa para leer los datos: no la guardamos. Contigo no realiza pagos por ti.
+      </p>
+    </div>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+  <script src="assets/scripts/main.js"></script>
+  <script src="assets/scripts/storage.js"></script>
+  <script src="assets/scripts/forms.js"></script>
+  <script src="assets/scripts/icons.js"></script>
+  <script src="assets/scripts/procedures-data.js"></script>
+  <script src="assets/scripts/ui-helpers.js"></script>
+  <script src="assets/scripts/bills.js"></script>
+  <script src="assets/scripts/guide-history.js"></script>
+  <script src="assets/scripts/assistant-data.js"></script>
+  <script src="assets/scripts/assistant.js"></script>
+  <script src="assets/scripts/reminders.js"></script>
+  <script src="assets/scripts/app-extras.js"></script>
+  <script src="assets/scripts/receipt-image.js"></script>
+  <script src="assets/scripts/scan.js"></script>
+</body>
+</html>
