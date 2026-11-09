@@ -3,7 +3,6 @@ const SESSION_KEY = "contigo.session";
 const PENDING_KEY = "contigo.pending";
 const RECEIPTS_KEY = "contigo.receipts";
 const GUIDE_KEY = "contigo.guide";
-
 function readJson(storage, key) {
   try {
     const value = storage.getItem(key);
@@ -60,6 +59,11 @@ function createUser(data) {
   writeJson(localStorage, USERS_KEY, users);
   return user;
 }
+function updateUser(userId, changes) {
+  const users = getUsers();
+  const user = users.find(function (item) {
+    return item.id === userId;
+  });
 
 function updateUser(userId, changes) {
   const users = getUsers();
@@ -76,7 +80,6 @@ function updateUser(userId, changes) {
   writeJson(localStorage, USERS_KEY, users);
   return user;
 }
-
 function startSession(userId, remember) {
   endSession();
   const storage = remember ? localStorage : sessionStorage;
@@ -118,7 +121,6 @@ function clearPending() {
   } catch (error) {
   }
 }
-
 function getReceipts(userId) {
   const receipts = readJson(localStorage, RECEIPTS_KEY) || [];
   return receipts
@@ -148,4 +150,4 @@ function clearGuide() {
     sessionStorage.removeItem(GUIDE_KEY);
   } catch (error) {
   }
-}
+}}
