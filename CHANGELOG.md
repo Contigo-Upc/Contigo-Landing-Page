@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.1.0] - 2026-11-09
+
+### Agregado
+- Catálogo de trámites por categoría con buscador (`procedures.html`).
+- Detalle de cada trámite con requisitos, tiempo estimado y opción de practicar o hacerlo de verdad (`procedure.html`).
+- Guía paso a paso con formulario, revisión de datos y comprobante para descargar o compartir (`guide.html`).
+- Trámites frecuentes en el Inicio.
+- Edición del perfil del usuario (`profile.html`).
+
 ## [1.0.1] - 2026-11-05
 
 ### Agregado
