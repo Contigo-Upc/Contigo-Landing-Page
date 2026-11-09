@@ -65,12 +65,6 @@ function updateUser(userId, changes) {
     return item.id === userId;
   });
 
-function updateUser(userId, changes) {
-  const users = getUsers();
-  const user = users.find(function (item) {
-    return item.id === userId;
-  });
-
   if (!user) {
     return null;
   }
@@ -150,4 +144,4 @@ function clearGuide() {
     sessionStorage.removeItem(GUIDE_KEY);
   } catch (error) {
   }
-}}
+}

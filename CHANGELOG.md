@@ -1,18 +1,8 @@
 # Changelog
 
-## [2.0.0] - 2026-11-09 (Sprint 2)
-## [1.1.0] - 2026-11-09
+## [2.0.0] - 2026-11-09
 
-### Agregado
-- Catálogo de trámites por categoría con buscador (`procedures.html`).
-- Detalle de cada trámite con requisitos, tiempo estimado y opción de practicar o hacerlo de verdad (`procedure.html`).
-- Guía paso a paso con formulario, revisión de datos y comprobante para descargar o compartir (`guide.html`).
-- Trámites frecuentes en el Inicio.
-- Edición del perfil del usuario (`profile.html`).
-
-## [1.0.1] - 2026-11-05
-
-### Agregado
+### Agregado (Sprint 2)
 - Audio de la instrucción de cada paso de la guía, con pausa y continuar (US-12).
 - Escaneo de recibo con lectura simulada, aviso de datos no leídos y opción de cancelar (US-16).
 - Revisión y corrección de los datos leídos antes de guardar (US-17).
@@ -32,6 +22,24 @@
 
 ### Notas
 - El código del Sprint 1 no se modificó: solo se agregaron etiquetas `<link>` y `<script>` al final de `home.html`, `procedures.html`, `procedure.html`, `profile.html` y `guide.html`.
+
+### Corregido
+- `storage.js` quedó con `updateUser` duplicada tras un merge y ninguna página podía iniciar sesión; se restauró.
+- Se recuperó la guía de contribución (`CONTRIBUTING.md`), que se había borrado por error.
+
+## [1.1.0] - 2026-11-09
+
+### Agregado
+- Catálogo de trámites por categoría con buscador (`procedures.html`).
+- Detalle de cada trámite con requisitos, tiempo estimado y opción de practicar o hacerlo de verdad (`procedure.html`).
+- Guía paso a paso con formulario, revisión de datos y comprobante para descargar o compartir (`guide.html`).
+- Trámites frecuentes en el Inicio.
+- Edición del perfil del usuario (`profile.html`).
+
+## [1.0.1] - 2026-11-05
+
+### Agregado
+- Guía de contribución (`CONTRIBUTING.md`): cómo usar el proyecto y cómo trabajar con ramas, commits y Pull Requests.
 
 ## [1.0.0] - 2026-11-05
 
